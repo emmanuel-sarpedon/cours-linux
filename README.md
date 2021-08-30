@@ -25,6 +25,11 @@
 5. [Effectuer des recherches et autres opérations](#effectuer-des-recherches-et-autres-operations)
    1. [Commande `find`](#commande-find)
    2. [Commande `grep`](#commande-grep)
+   3. [Remplacement par "globbing"](#le-remplacement-"par-globbing")
+   4. [La redirection](#la-redirection)
+   5. [Le pipe](#le-pipe)
+   6. [Aller plus loin avec `find`](#aller-plus-loin-avec-find)
+   7. [Compresser et décompresser avec `tar`](#compresser-et-décompresser-avec-tar)
 
 ---
 
@@ -514,4 +519,86 @@ Bookshelf
 ```
 
 > `ls`renvoie la liste des fichiers/dossiers présents dans le répertoire courant, envoie le résultat vers la commande `sort`qui se charge d'inverser le résultat grâce à l'option `-r`
+
+
+
+#### Aller plus loin avec `find`
+
+`-exec` : exécute une commande pour chaque résultat trouvé
+
+```bash
+pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -exec grep -il 'gpio' {} \;
+/home/pi/Documents/raspberry-script/fanoff
+/home/pi/Documents/raspberry-script/cputemp
+/home/pi/Documents/raspberry-script/fanon
+```
+
+> `{}`sera remplacé par chaque résultat de `find` 
+>
+> `;` sert à prévenir la commande `find`que la boucle est terminée. On l'échappe pour éviter que le caractère `;` soit interprété : `\;`
+
+
+
+On pourrait utiliser un pipe au lieu d'option `-exec`
+
+```bash
+pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 grep -il 'gpio'
+/home/pi/Documents/raspberry-script/fanoff
+/home/pi/Documents/raspberry-script/cputemp
+/home/pi/Documents/raspberry-script/fanon
+```
+
+> on privilégie la commande `-print0`à `-print`
+>
+> `xargs`récupère comme argument chaque résultat précédent le pipe (la sortie `STDOUT`)
+
+
+
+On pourrait ensuite supprimer les fichiers trouvés par la commande
+
+```bash
+pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 grep -il 'gpio' | xargs rm
+```
+
+
+
+#### Compresser et décompresser avec `tar`
+
+```bash
+tar -czvf mon-fichier.tar.gz .
+```
+
+##### Options
+
+`-c`: créer l'archive
+
+`-t` : afficher le contenu d'une archive
+
+`-z`: utiliser l'algorithme de compression 'gzip'
+
+`-v`: afficher un résultat visuel
+
+`-f` : pour nommer le fichier d'archive
+
+```bash
+tar -czvf scripts.tar.gz .
+```
+
+> crée une archive 'scripts.tar.gz' à partir des fichiers présents dans le répertoire courant
+
+
+
+```bash
+tar -tzvf scripts.tar.gz
+```
+
+> affiche le contenu de mon archive
+
+
+
+```bash
+tar -xvzf ../scripts.tar.gz 
+```
+
+> décompresse mon archive qui est situé dans le répertoire parent, dans le répertoire courant
 
