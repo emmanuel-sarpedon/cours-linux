@@ -46,7 +46,7 @@ ln -s {fichier ou dossier pointé} {nom_du_lien}
 cat {nom_du_fichier}
 ```
 
-##### Options :
+##### Options
 
 `-n`: numéroter les lignes du fichier
 
@@ -423,3 +423,51 @@ pi@rpidemanu:~/Documents $ find / -anewer /home/pi/Documents/raspberry-script/cp
 
 #### Commande `grep`
 
+```bash
+grep {RegExp} {fichier_repertoire}
+```
+
+> filtre les lignes correspondantes à l'expression régulière (sensible à la casse)
+
+##### Options
+
+`-i` : insensible à la casse
+
+`-v` : inverse la recherche
+
+`-c` : renvoie le nombre de lignes trouvés
+
+`-n` : affiche le numéro de la ligne
+
+`-l` : renvoie uniquement le nom du fichier
+
+`-r` : prend en compte les sous-dossiers de manière récursive
+
+```bash
+pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
+./Documents/raspberry-script/fanoff
+./Documents/raspberry-script/cputemp
+./Documents/raspberry-script/fanon
+```
+
+> affiche les fichiers (`-l`) qui contiennent le mot "gpio" dans le dossier courant, ainsi que les sous-dossiers (`-r`)
+
+
+
+#### Le remplacement par "globbing"
+
+`*` : remplace par n'importe quel(s) caractère(s)
+
+`?` : remplace par un caractère
+
+`\` : échappe un caractère "réservé"
+
+> `ls \???` : liste les fichiers commençant par ? et ayant trois caractères au total
+
+`[..]` : remplace par une liste définie
+
+> `ls [ws]??` : liste les fichiers commençant par w ou s et ayant trois caractères au total
+>
+> on peut utiliser une RegExp
+>
+> `ls [^ws]??` : liste les fichiers ne commençant pas par w ou s et ayant trois caractères au total
