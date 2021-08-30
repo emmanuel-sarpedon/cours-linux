@@ -301,5 +301,80 @@ chmod u+rwx,g+rx-w,o+r-wx fichier3
 
 
 
-### - Effectuer une recherche avec la commande `find`
+### - Effectuer des recherches et autres opérations
 
+#### La commande `find`
+
+```bash
+find {repertoire_de_recherche} {-option} {critere_de_recherche} {action}
+```
+
+> Contrairement aux autres commandes, les options sont nommés par leur nom complet et non pas par une seule lettre. De plus, même si on le nomme par son nom complet, on ne mettra qu'un tiret devant l'option
+
+
+
+```bash
+pi@rpidemanu:~ $ find /home/pi/Documents/raspberry-script/ -name fan* -print
+/home/pi/Documents/raspberry-script/fanoff
+/home/pi/Documents/raspberry-script/fanon
+```
+
+> {repertoire_de_recherche} : `/home/pi/Documents/raspberry-script/`
+>
+> {-option} : `-name` - recherche par nom
+>
+> {critere_de_recherche} : `fan*` - soit tous les fichiers commençant par "fan[...]"
+>
+> {action} : `-print` - affiche tous les résultats de la recherche
+
+##### Options de recherche
+
+`-name` : recherche par nom
+
+`-path` : recherche par dossier
+
+```bash
+pi@rpidemanu:~ $ find /home/pi/ -path /home/pi/*/cputemp -print
+/home/pi/Documents/raspberry-script/cputemp
+```
+
+`-lname` : recherche dans les cibles de lien symbolique
+
+`-iname` : recherche par expressions régulières (RegExp)
+
+`-type` : recherche par type
+
+- f : file - fichier
+- d : directory - dossier
+- l : link - lien symbolique
+
+`-atime` : recherche le(s) fichiers **a**ccédé(s) depuis x _jours_
+
+```bash
+ sudo find / -atime 1
+/var/log/kern.log
+/var/log/user.log
+/var/log/daemon.log
+/var/log/auth.log
+/var/log/messages
+/var/log/debug
+/var/log/syslog.1
+/var/log/cups/access_log.1
+/var/cache/cups/job.cache.O
+```
+
+>ci-dessus, on recherche tous les fichiers qui ont été accédé depuis **1** jour
+
+`-ctime` :  recherche le(s) fichiers **c**hangé(s) depuis x _jours_
+
+`-mtime` : recherche le(s) fichiers **m**odifié(s) depuis x _jours_
+
+`-[a-c-m]min` : idem que time - on ne compte plus en jours mais en _minutes_
+
+`-[a-c]newer` : recherche les fichiers accédés ou changés plus récemment que le fichier passé en paramètres
+
+```bas
+pi@rpidemanu:~/Documents $ find / -anewer /home/pi/Documents/raspberry-script/cputemp
+```
+
+> recherche tous les fichiers accédés après le fichier `/home/pi/Documents/raspberry-script/cputemp`
