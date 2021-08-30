@@ -1,10 +1,36 @@
 # Linux
 
+## Sommaire
+
+### [Cours 1 - Les commandes du terminal](#cours-1-:-les-commandes-du-terminal)
+
+1. [Créer des liens symboliques](#creer-des-liens-symboliques)
+
+2. [Visualiser le contenu d'un fichier](#visualiser-le-contenu-dun-fichier)
+   1. [Commande `cat`](#commande-cat)
+   2. [Commande `less`](#commande-less)
+   3. [Commande `tail`](#commande-tail)
+   4. [Commande `head`](#commande-head)
+   5. [Commande `strings`](#commande-strings)
+
+3. [Afficher les stats d'un fichier](#afficher-les-stats-dun-fichier)
+   1. [Commande `stat`](#commande-stat)
+   2. [Commande `wc`](#commande-wc)
+   3. [Commande `du`](#commande-du)
+   4. [Commande `df`](#commande-df)
+4. [Manipuler les permissions](#manipuler-les-permissions)
+   1. [Les permissions](#les-permissions)
+   2. [Commande `chmod`](#commande-chmod)
+   3. [Exécuter des commandes en tant que superuser](#exécuter-des-commandes-en-tant-que-superuser)
+5. [Effectuer des recherches et autres opérations](#effectuer-des-recherches-et-autres-operations)
+   1. [Commande `find`](#commande-find)
+   2. [Commande `grep`](#commande-grep)
+
 ---
 
 ## Cours 1 : Les commandes du terminal
 
-### - Créer des liens symboliques (équivalent aux raccourcis)
+### CREER DES LIENS SYMBOLIQUES
 
 ```bash
 ln -s {fichier ou dossier pointé} {nom_du_lien}
@@ -12,7 +38,7 @@ ln -s {fichier ou dossier pointé} {nom_du_lien}
 
 
 
-### - Visualiser le contenu d'un fichier
+### VISUALISER LE CONTENU D'UN FICHIER
 
 #### Commande `cat`
 
@@ -92,7 +118,7 @@ strings {nom_du_fichier}
 
 
 
-### - Afficher les statistiques d'un fichier ou d'un répertoire
+### AFFICHER LES STATS D'UN FICHIER
 
 #### Commande `stat`
 
@@ -164,7 +190,7 @@ tmpfs              403M    4,1k  403M   1% /run/user/1000
 
 
 
-### - Manipuler les permissions et propriétaires
+### MANIPULER LES PERMISSIONS
 
 ```ba
 pi@rpidemanu:~ $ ls -l
@@ -301,9 +327,9 @@ chmod u+rwx,g+rx-w,o+r-wx fichier3
 
 
 
-### - Effectuer des recherches et autres opérations
+### EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
 
-#### La commande `find`
+#### Commande `find`
 
 ```bash
 find {repertoire_de_recherche} {-option} {critere_de_recherche} {action}
@@ -326,6 +352,8 @@ pi@rpidemanu:~ $ find /home/pi/Documents/raspberry-script/ -name fan* -print
 > {critere_de_recherche} : `fan*` - soit tous les fichiers commençant par "fan[...]"
 >
 > {action} : `-print` - affiche tous les résultats de la recherche
+
+
 
 ##### Options de recherche
 
@@ -371,10 +399,27 @@ pi@rpidemanu:~ $ find /home/pi/ -path /home/pi/*/cputemp -print
 
 `-[a-c-m]min` : idem que time - on ne compte plus en jours mais en _minutes_
 
-`-[a-c]newer` : recherche les fichiers accédés ou changés plus récemment que le fichier passé en paramètres
+`-[a-c-'']newer` : recherche les fichiers accédés / changés / modifiés (ne pas préciser le -m !!!) plus récemment que le fichier passé en paramètres
 
 ```bas
 pi@rpidemanu:~/Documents $ find / -anewer /home/pi/Documents/raspberry-script/cputemp
 ```
 
 > recherche tous les fichiers accédés après le fichier `/home/pi/Documents/raspberry-script/cputemp`
+
+`-size` : recherche par taille
+
+`-empty` : recherche les fichiers vides
+
+> les critères de recherche sont cumulables !
+>
+> on aurait très bien pu écrire
+>
+> ` find / -anewer /home/pi/Documents/raspberry-script/cputemp -empty -type d`
+>
+> recherche tous les **répertoires**, **vides** accédés après `/home/pi/Documents/raspberry-script/cputemp`
+
+
+
+#### Commande `grep`
+
