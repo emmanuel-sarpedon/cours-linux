@@ -471,3 +471,47 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 > on peut utiliser une RegExp
 >
 > `ls [^ws]??` : liste les fichiers ne commençant pas par w ou s et ayant trois caractères au total
+
+
+
+#### La redirection
+
+`STDIN`: entrée standard
+
+`STDOUT` : sortie standard
+
+`STDERR` : sortie 'erreur'
+
+`>` : redirige la sortie
+
+```bash
+ls -l > /home/pi/resultat
+```
+
+> au lieu d'afficher à l'écran le résultat de `ls`, créé ou le remplace un fichier 'resultat' et y insère le retour de `ls`
+
+`>>` : redirige la sortie à la fin du fichier
+
+> contrairement à `>`, la double redirection ne va pas remplacer le fichier si ce dernier existe mais insère le résultat de la commande à la fin du fichier dans modifier le contenu précédent
+
+
+
+#### Le pipe
+
+> avec le 'pipe' on peut "rediriger" la sortie `STDOUT` d'une commande vers le `STDIN` d'une autre commande
+
+```bash
+pi@rpidemanu:~ $ ls | sort -r
+Videos
+Templates
+Public
+Pictures
+Music
+Downloads
+Documents
+Desktop
+Bookshelf
+```
+
+> `ls`renvoie la liste des fichiers/dossiers présents dans le répertoire courant, envoie le résultat vers la commande `sort`qui se charge d'inverser le résultat grâce à l'option `-r`
+
