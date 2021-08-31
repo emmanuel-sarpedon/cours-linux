@@ -1,3 +1,11 @@
+# LINUX
+
+https://github.com/emmanuel-sarpedon/cours-linux
+
+---
+
+_Table des matières_
+
 <!-- vscode-markdown-toc -->
 
 - 1. [Cours 1 : Les commandes du terminal](#Cours1:Lescommandesduterminal)
@@ -41,14 +49,16 @@
     - 2.3.2. [Commande `fdisk`](#Commandefdisk)
     - 2.3.3. [Commande `mkfs`](#Commandemkfs)
     - 2.3.4. [Commande `mount`](#Commandemount)
+  - 2.4. [LE RESEAU](#LERESEAU)
+    - 2.4.1. [Le Network Manager](#LeNetworkManager)
+  - 2.5. [Les fichiers de configuration](#Lesfichiersdeconfiguration)
+  - 2.6. [LES SERVICES](#LESSERVICES)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
 	autoSave=false
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
-
-# Linux
 
 ---
 
@@ -196,7 +206,7 @@ tmpfs              403M    4,1k  403M   1% /run/user/1000
 
 ### 1.4. <a name='MANIPULERLESPERMISSIONS'></a>MANIPULER LES PERMISSIONS
 
-```ba
+```bash
 pi@rpidemanu:~ $ ls -l
 total 36
 drwxr-xr-x 2 pi pi 4096 mai    7 18:52 Bookshelf
@@ -885,3 +895,53 @@ mmcblk0     179:0    0 14,9G  0 disk
 ├─mmcblk0p2 179:2    0 14,6G  0 part /
 └─mmcblk0p3 179:3    0    1M  0 part /data-test
 ```
+
+### 2.4. <a name='LERESEAU'></a>LE RESEAU
+
+#### 2.4.1. <a name='LeNetworkManager'></a>Le Network Manager
+
+```bash
+pi@rpidemanu:/etc/network $ systemctl status NetworkManager
+● NetworkManager.service - Network Manager
+   Loaded: loaded (/lib/systemd/system/NetworkManager.service; enabled; vendor preset: ena
+   Active: active (running) since Tue 2021-08-31 14:31:57 +04; 1h 10min ago
+     Docs: man:NetworkManager(8)
+ Main PID: 3738 (NetworkManager)
+    Tasks: 3 (limit: 4915)
+   CGroup: /system.slice/NetworkManager.service
+           └─3738 /usr/sbin/NetworkManager --no-daemon
+
+août 31 14:32:42 rpidemanu NetworkManager[3738]: <error> [1630405962.5830] sup-iface[0x127
+août 31 14:32:42 rpidemanu NetworkManager[3738]: <info>  [1630405962.5832] device (wlan0):
+août 31 14:32:53 rpidemanu NetworkManager[3738]: <warn>  [1630405973.2474] device (wlan0):
+août 31 14:32:53 rpidemanu NetworkManager[3738]: <error> [1630405973.5337] sup-iface[0x127
+août 31 14:32:53 rpidemanu NetworkManager[3738]: <info>  [1630405973.5339] device (wlan0):
+août 31 14:32:53 rpidemanu NetworkManager[3738]: <info>  [1630405973.5340] device (wlan0):
+août 31 14:44:26 rpidemanu NetworkManager[3738]: <info>  [1630406666.8182] agent-manager:
+août 31 14:44:26 rpidemanu NetworkManager[3738]: <info>  [1630406666.8401] audit: op="conn
+août 31 14:44:39 rpidemanu NetworkManager[3738]: <info>  [1630406679.9556] agent-manager:
+août 31 14:44:39 rpidemanu NetworkManager[3738]: <info>  [1630406679.9657] audit: op="conn
+lines 1-19/19 (END)
+```
+
+##### Commande `nmtui`
+
+> **N**etwork **M**anager **T**ext **U**ser **I**nterface = gestionnaire de réseau avec interface en mode texte
+
+![nmtui-screenshot](https://res.cloudinary.com/manu-sarp/image/upload/v1630410690/screenshots/nmtui_bxjnyn.png)
+
+##### Commande `nmcli`
+
+> **N**etwork **M**anager **C**ommand **L**ine **I**nterface = gestionnaire de réseau en ligne de commandes
+
+```bash
+pi@rpidemanu:/etc/network $ nmcli connection show
+NAME                 UUID                                  TYPE      DEVICE
+Connexion filaire 1  cf521997-c08a-3968-91c9-c9a693ef2340  ethernet  --
+```
+
+### 2.5. <a name='Lesfichiersdeconfiguration'></a>Les fichiers de configuration
+
+> Sous Debian, le fichier de configuration réseau se trouve dans `/etc/network/interfaces`
+
+### 2.6. <a name='LESSERVICES'></a>LES SERVICES
