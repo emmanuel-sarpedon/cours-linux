@@ -1,44 +1,49 @@
 <!-- vscode-markdown-toc -->
 
-- [Cours 1 : Les commandes du terminal](#Cours1:Lescommandesduterminal)
-  - [CREER DES LIENS SYMBOLIQUES](#CREERDESLIENSSYMBOLIQUES)
-  - [VISUALISER LE CONTENU D'UN FICHIER](#VISUALISERLECONTENUDUNFICHIER)
-    - [Commande `cat`](#Commandecat)
-    - [ Commande `less`](#Commandeless)
-    - [Commande `tail`](#Commandetail)
-    - [Commande `head`](#Commandehead)
-    - [Commande `strings`](#Commandestrings)
-  - [AFFICHER LES STATS D'UN FICHIER](#AFFICHERLESSTATSDUNFICHIER)
-    - [Commande `stat`](#Commandestat)
-    - [Commande `wc`](#Commandewc)
-    - [Commande `du`](#Commandedu)
-    - [Commande `df`](#Commandedf)
-  - [MANIPULER LES PERMISSIONS](#MANIPULERLESPERMISSIONS)
-    - [Les permissions](#Lespermissions)
-    - [Commande `chmod`](#Commandechmod)
-    - [Exécuter des commandes en tant que superuser](#Excuterdescommandesentantquesuperuser)
-  - [EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS](#EFFECTUERDESRECHERCHESETAUTRESOPERATIONS)
-    - [Commande `find`](#Commandefind)
-    - [Commande `grep`](#Commandegrep)
-    - [Le remplacement par "globbing"](#Leremplacementparglobbing)
-    - [La redirection](#Laredirection)
-    - [Le pipe](#Lepipe)
-    - [Aller plus loin avec `find`](#Allerplusloinavecfind)
-    - [Compresser et décompresser avec `tar`](#Compresseretdcompresseravectar)
-- [Cours 2 : Administration Linux](#Cours2:AdministrationLinux)
-  - [RAPPELS](#RAPPELS)
-    - [Les métacaractères](#Lesmtacaractres)
-    - [Les différents types de fichier](#Lesdiffrentstypesdefichier)
-    - [L'arborescence de la racine `/`de la machine](#Larborescencedelaracinedelamachine)
-  - [LES PAQUETS LOGICIELS](#LESPAQUETSLOGICIELS)
-    - [Mettre à jour les paquets](#Mettrejourlespaquets)
-    - [Chercher un paquet](#Chercherunpaquet)
-    - [Installer un paquet](#Installerunpaquet)
-    - [Supprimer un paquet](#Supprimerunpaquet)
-    - [Installer les logiciels depuis les sources](#Installerleslogicielsdepuislessources)
+- 1. [Cours 1 : Les commandes du terminal](#Cours1:Lescommandesduterminal)
+  - 1.1. [CREER DES LIENS SYMBOLIQUES](#CREERDESLIENSSYMBOLIQUES)
+  - 1.2. [VISUALISER LE CONTENU D'UN FICHIER](#VISUALISERLECONTENUDUNFICHIER)
+    - 1.2.1. [Commande `cat`](#Commandecat)
+    - 1.2.2. [ Commande `less`](#Commandeless)
+    - 1.2.3. [Commande `tail`](#Commandetail)
+    - 1.2.4. [Commande `head`](#Commandehead)
+    - 1.2.5. [Commande `strings`](#Commandestrings)
+  - 1.3. [AFFICHER LES STATS D'UN FICHIER](#AFFICHERLESSTATSDUNFICHIER)
+    - 1.3.1. [Commande `stat`](#Commandestat)
+    - 1.3.2. [Commande `wc`](#Commandewc)
+    - 1.3.3. [Commande `du`](#Commandedu)
+    - 1.3.4. [Commande `df`](#Commandedf)
+  - 1.4. [MANIPULER LES PERMISSIONS](#MANIPULERLESPERMISSIONS)
+    - 1.4.1. [Les permissions](#Lespermissions)
+    - 1.4.2. [Commande `chmod`](#Commandechmod)
+    - 1.4.3. [Exécuter des commandes en tant que superuser](#Excuterdescommandesentantquesuperuser)
+  - 1.5. [EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS](#EFFECTUERDESRECHERCHESETAUTRESOPERATIONS)
+    - 1.5.1. [Commande `find`](#Commandefind)
+    - 1.5.2. [Commande `grep`](#Commandegrep)
+    - 1.5.3. [Le remplacement par "globbing"](#Leremplacementparglobbing)
+    - 1.5.4. [La redirection](#Laredirection)
+    - 1.5.5. [Le pipe](#Lepipe)
+    - 1.5.6. [Aller plus loin avec `find`](#Allerplusloinavecfind)
+    - 1.5.7. [Compresser et décompresser avec `tar`](#Compresseretdcompresseravectar)
+- 2. [Cours 2 : Administration Linux](#Cours2:AdministrationLinux)
+  - 2.1. [RAPPELS](#RAPPELS)
+    - 2.1.1. [Les métacaractères](#Lesmtacaractres)
+    - 2.1.2. [Les différents types de fichier](#Lesdiffrentstypesdefichier)
+    - 2.1.3. [L'arborescence de la racine `/`de la machine](#Larborescencedelaracinedelamachine)
+  - 2.2. [LES PAQUETS LOGICIELS](#LESPAQUETSLOGICIELS)
+    - 2.2.1. [Mettre à jour les paquets](#Mettrejourlespaquets)
+    - 2.2.2. [Chercher un paquet](#Chercherunpaquet)
+    - 2.2.3. [Installer un paquet](#Installerunpaquet)
+    - 2.2.4. [Supprimer un paquet](#Supprimerunpaquet)
+    - 2.2.5. [Installer les logiciels depuis les sources](#Installerleslogicielsdepuislessources)
+  - 2.3. [LE STOCKAGE](#LESTOCKAGE)
+    - 2.3.1. [Commande `lsblk`](#Commandelsblk)
+    - 2.3.2. [Commande `fdisk`](#Commandefdisk)
+    - 2.3.3. [Commande `mkfs`](#Commandemkfs)
+    - 2.3.4. [Commande `mount`](#Commandemount)
 
 <!-- vscode-markdown-toc-config
-	numbering=false
+	numbering=true
 	autoSave=false
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
@@ -47,17 +52,17 @@
 
 ---
 
-## <a name='Cours1:Lescommandesduterminal'></a>Cours 1 : Les commandes du terminal
+## 1. <a name='Cours1:Lescommandesduterminal'></a>Cours 1 : Les commandes du terminal
 
-### <a name='CREERDESLIENSSYMBOLIQUES'></a>CREER DES LIENS SYMBOLIQUES
+### 1.1. <a name='CREERDESLIENSSYMBOLIQUES'></a>CREER DES LIENS SYMBOLIQUES
 
 ```bash
 ln -s {fichier ou dossier pointé} {nom_du_lien}
 ```
 
-### <a name='VISUALISERLECONTENUDUNFICHIER'></a>VISUALISER LE CONTENU D'UN FICHIER
+### 1.2. <a name='VISUALISERLECONTENUDUNFICHIER'></a>VISUALISER LE CONTENU D'UN FICHIER
 
-#### <a name='Commandecat'></a>Commande `cat`
+#### 1.2.1. <a name='Commandecat'></a>Commande `cat`
 
 ```bash
 cat {nom_du_fichier}
@@ -73,7 +78,7 @@ cat {nom_du_fichier}
 
 > Le problème de `cat`c'est que l'ensemble du fichier est affiché (pose souci pour les fichiers très longs ... )
 
-#### <a name='Commandeless'></a> Commande `less`
+#### 1.2.2. <a name='Commandeless'></a> Commande `less`
 
 > La commande `less` lance d'une certaine façon, un éditeur de texte en lecture seule pour lire le fichier et y naviguer, en commançant par le haut du fichier
 
@@ -95,7 +100,7 @@ less {nom_du_fichier}
 
 `n`: _next_ - continuer la recherche
 
-#### <a name='Commandetail'></a>Commande `tail`
+#### 1.2.3. <a name='Commandetail'></a>Commande `tail`
 
 > Affiche les 10 dernières lignes du fichier (par défaut)
 
@@ -109,7 +114,7 @@ tail {nom_du_fichier}
 
 `-n{integer}`: afficher le nombre de ligne passé en paramètre (au lieu des 10 lignes par défaut )
 
-#### <a name='Commandehead'></a>Commande `head`
+#### 1.2.4. <a name='Commandehead'></a>Commande `head`
 
 > Affiche les 10 premières lignes du fichier (par défaut)
 
@@ -117,7 +122,7 @@ tail {nom_du_fichier}
 head {nom_du_fichier}
 ```
 
-#### <a name='Commandestrings'></a>Commande `strings`
+#### 1.2.5. <a name='Commandestrings'></a>Commande `strings`
 
 > Extrait les chaînes de caractère compilés d'un fichier ou même d'un exécutable et les affiche à l'écran
 
@@ -125,9 +130,9 @@ head {nom_du_fichier}
 strings {nom_du_fichier}
 ```
 
-### <a name='AFFICHERLESSTATSDUNFICHIER'></a>AFFICHER LES STATS D'UN FICHIER
+### 1.3. <a name='AFFICHERLESSTATSDUNFICHIER'></a>AFFICHER LES STATS D'UN FICHIER
 
-#### <a name='Commandestat'></a>Commande `stat`
+#### 1.3.1. <a name='Commandestat'></a>Commande `stat`
 
 ```bash
 stat {nom_du_fichier}
@@ -144,7 +149,7 @@ Modif. : 2021-08-27 13:24:02.846841408 +0400
 Changt : 2021-08-27 13:2
 ```
 
-#### <a name='Commandewc'></a>Commande `wc`
+#### 1.3.2. <a name='Commandewc'></a>Commande `wc`
 
 ```bash
 wc {nom_du_fichier}
@@ -158,7 +163,7 @@ pi@rpidemanu:/var $ wc log/syslog
 > - Le nombre de mots (3289)
 > - Le nombre d'octets (25077)
 
-#### <a name='Commandedu'></a>Commande `du`
+#### 1.3.3. <a name='Commandedu'></a>Commande `du`
 
 > _**D**isk **U**sage_ : affiche une taille en nombre de blocs.. pas très pratique en l'état, on utilisera donc les options ci-dessous
 
@@ -172,7 +177,7 @@ pi@rpidemanu:/var $ wc log/syslog
 
 `-s` : afficher uniquement le total
 
-#### <a name='Commandedf'></a>Commande `df`
+#### 1.3.4. <a name='Commandedf'></a>Commande `df`
 
 > Affiche le taille des périphériques montés sur la machine
 
@@ -189,7 +194,7 @@ tmpfs              2,1G       0  2,1G   0% /sys/fs/cgroup
 tmpfs              403M    4,1k  403M   1% /run/user/1000
 ```
 
-### <a name='MANIPULERLESPERMISSIONS'></a>MANIPULER LES PERMISSIONS
+### 1.4. <a name='MANIPULERLESPERMISSIONS'></a>MANIPULER LES PERMISSIONS
 
 ```ba
 pi@rpidemanu:~ $ ls -l
@@ -205,7 +210,7 @@ drwxr-xr-x 2 pi pi 4096 mai    7 19:07 Templates
 drwxr-xr-x 2 pi pi 4096 mai    7 19:07 Videos
 ```
 
-#### <a name='Lespermissions'></a>Les permissions
+#### 1.4.1. <a name='Lespermissions'></a>Les permissions
 
 r : read
 
@@ -219,7 +224,7 @@ Il y a trois blocs :
 - Le groupe propriétaire
 - Tout le monde
 
-#### <a name='Commandechmod'></a>Commande `chmod`
+#### 1.4.2. <a name='Commandechmod'></a>Commande `chmod`
 
 > Modifie les permissions d'un fichier
 
@@ -314,15 +319,15 @@ On peut aussi combiner plusieurs actions en même temps :
 chmod u+rwx,g+rx-w,o+r-wx fichier3
 ```
 
-#### <a name='Excuterdescommandesentantquesuperuser'></a>Exécuter des commandes en tant que superuser
+#### 1.4.3. <a name='Excuterdescommandesentantquesuperuser'></a>Exécuter des commandes en tant que superuser
 
 `sudo` : _Super User Do_ : exécute une commande en tant que superutilisateur
 
 `sudo su` : permet de rester superutilisateur pendant un laps de temps déterminé par le système
 
-### <a name='EFFECTUERDESRECHERCHESETAUTRESOPERATIONS'></a>EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
+### 1.5. <a name='EFFECTUERDESRECHERCHESETAUTRESOPERATIONS'></a>EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
 
-#### <a name='Commandefind'></a>Commande `find`
+#### 1.5.1. <a name='Commandefind'></a>Commande `find`
 
 ```bash
 find {repertoire_de_recherche} {-option} {critere_de_recherche} {action}
@@ -408,7 +413,7 @@ pi@rpidemanu:~/Documents $ find / -anewer /home/pi/Documents/raspberry-script/cp
 >
 > recherche tous les **répertoires**, **vides** accédés après `/home/pi/Documents/raspberry-script/cputemp`
 
-#### <a name='Commandegrep'></a>Commande `grep`
+#### 1.5.2. <a name='Commandegrep'></a>Commande `grep`
 
 ```bash
 grep {RegExp} {fichier_repertoire}
@@ -439,7 +444,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 
 > affiche les fichiers (`-l`) qui contiennent le mot "gpio" dans le dossier courant, ainsi que les sous-dossiers (`-r`)
 
-#### <a name='Leremplacementparglobbing'></a>Le remplacement par "globbing"
+#### 1.5.3. <a name='Leremplacementparglobbing'></a>Le remplacement par "globbing"
 
 `*` : remplace par n'importe quel(s) caractère(s)
 
@@ -457,7 +462,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 >
 > `ls [^ws]??` : liste les fichiers ne commençant pas par w ou s et ayant trois caractères au total
 
-#### <a name='Laredirection'></a>La redirection
+#### 1.5.4. <a name='Laredirection'></a>La redirection
 
 `STDIN`: entrée standard
 
@@ -479,7 +484,7 @@ ls -l > /home/pi/resultat
 
 `2>` ou `2>>`: redirige les erreurs
 
-#### <a name='Lepipe'></a>Le pipe
+#### 1.5.5. <a name='Lepipe'></a>Le pipe
 
 > avec le 'pipe' on peut "rediriger" la sortie `STDOUT` d'une commande vers le `STDIN` d'une autre commande
 
@@ -498,7 +503,7 @@ Bookshelf
 
 > `ls`renvoie la liste des fichiers/dossiers présents dans le répertoire courant, envoie le résultat vers la commande `sort`qui se charge d'inverser le résultat grâce à l'option `-r`
 
-#### <a name='Allerplusloinavecfind'></a>Aller plus loin avec `find`
+#### 1.5.6. <a name='Allerplusloinavecfind'></a>Aller plus loin avec `find`
 
 `-exec` : exécute une commande pour chaque résultat trouvé
 
@@ -522,7 +527,7 @@ pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 g
 /home/pi/Documents/raspberry-script/fanon
 ```
 
-> on privilégie la commande `-print0`à `-print`
+> On privilégie la commande `-print0`à `-print`
 >
 > `xargs`récupère comme argument chaque résultat précédent le pipe (la sortie `STDOUT`)
 
@@ -532,7 +537,7 @@ On pourrait ensuite supprimer les fichiers trouvés par la commande
 pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 grep -il 'gpio' | xargs rm
 ```
 
-#### <a name='Compresseretdcompresseravectar'></a>Compresser et décompresser avec `tar`
+#### 1.5.7. <a name='Compresseretdcompresseravectar'></a>Compresser et décompresser avec `tar`
 
 ```bash
 tar -czvf mon-fichier.tar.gz .
@@ -570,11 +575,11 @@ tar -xvzf ../scripts.tar.gz
 
 ---
 
-## <a name='Cours2:AdministrationLinux'></a>Cours 2 : Administration Linux
+## 2. <a name='Cours2:AdministrationLinux'></a>Cours 2 : Administration Linux
 
-### <a name='RAPPELS'></a>RAPPELS
+### 2.1. <a name='RAPPELS'></a>RAPPELS
 
-#### <a name='Lesmtacaractres'></a>Les métacaractères
+#### 2.1.1. <a name='Lesmtacaractres'></a>Les métacaractères
 
 |         Caractère          |            Interprétation             |
 | :------------------------: | :-----------------------------------: |
@@ -584,7 +589,7 @@ tar -xvzf ../scripts.tar.gz
 |             \              | Protection de caractère (échappement) |
 |     'xxx' (apostrophe)     |          Bloc de protection           |
 
-#### <a name='Lesdiffrentstypesdefichier'></a>Les différents types de fichier
+#### 2.1.2. <a name='Lesdiffrentstypesdefichier'></a>Les différents types de fichier
 
 | Symbôle |        Type de fichier        |
 | :-----: | :---------------------------: |
@@ -595,7 +600,7 @@ tar -xvzf ../scripts.tar.gz
 |    p    | 'pipe' - fichier de transfert |
 |    s    |           'socket'            |
 
-#### <a name='Larborescencedelaracinedelamachine'></a>L'arborescence de la racine `/`de la machine
+#### 2.1.3. <a name='Larborescencedelaracinedelamachine'></a>L'arborescence de la racine `/`de la machine
 
 ```bash
 pi@rpidemanu:~ $ ls /
@@ -637,7 +642,7 @@ boot  etc  lib   media       opt  root  sbin  srv   tmp  var
 
 `/var`: fichiers utilisés par les programmes qui tournent en tâche de fond
 
-### <a name='LESPAQUETSLOGICIELS'></a>LES PAQUETS LOGICIELS
+### 2.2. <a name='LESPAQUETSLOGICIELS'></a>LES PAQUETS LOGICIELS
 
 On utilise un gestionnaire de paquet pour mettre à jour, supprimer ou rajouter de nouveaux logiciels.
 
@@ -645,26 +650,26 @@ Les plus connus sont `apt` sur Debian/Ubuntu, `dnf`ou `yum`sur CentOs.
 
 > Toutes modifications sur les paquets installés sur la machine sont des tâches d'administration. Il est nécessaire d'identifier en tant que _Super User_ via la commande `sudo`ou `su`si vous connaissez le mot de passe de l'utilisateur `root`
 
-#### <a name='Mettrejourlespaquets'></a>Mettre à jour les paquets
+#### 2.2.1. <a name='Mettrejourlespaquets'></a>Mettre à jour les paquets
 
 ```bash
 sudo apt update #mets à jour la liste des paquets et leur version
 sudo apt upgrade #télécharge et installe les paquets à mettre à jour
 ```
 
-#### <a name='Chercherunpaquet'></a>Chercher un paquet
+#### 2.2.2. <a name='Chercherunpaquet'></a>Chercher un paquet
 
 ```bash
 sudo apt search {paquet_recherché}
 ```
 
-#### <a name='Installerunpaquet'></a>Installer un paquet
+#### 2.2.3. <a name='Installerunpaquet'></a>Installer un paquet
 
 ```bash
 sudo apt install {paquet_à_installer}
 ```
 
-#### <a name='Supprimerunpaquet'></a>Supprimer un paquet
+#### 2.2.4. <a name='Supprimerunpaquet'></a>Supprimer un paquet
 
 ```bash
 sudo apt remove {paquet_à_désinstaller}
@@ -672,7 +677,7 @@ sudo apt remove {paquet_à_désinstaller}
 
 > Sur certaines distributions, on peut aussi utiliser le gestionnaire `snap`. Certains éditeurs de logiciels préférent ce gestionnaire pour héberger eux-même leurs paquets
 
-#### <a name='Installerleslogicielsdepuislessources'></a>Installer les logiciels depuis les sources
+#### 2.2.5. <a name='Installerleslogicielsdepuislessources'></a>Installer les logiciels depuis les sources
 
 On lance le programme `configure`qui est présent dans le code source du programme téléchargé. `configure`vérifie que l'ensemble des dépendances nécessaires au programme soient bien installées sur la machine. Sinon, il renvoie la liste des dépendances manquantes.
 
@@ -680,4 +685,203 @@ On lance le programme `configure`qui est présent dans le code source du program
 sudo ./configure #vérifie les dépendances installées
 sudo make #compile le code source
 sudo make install #installe le programme sur la machine
+```
+
+### 2.3. <a name='LESTOCKAGE'></a>LE STOCKAGE
+
+#### 2.3.1. <a name='Commandelsblk'></a>Commande `lsblk`
+
+> Liste l'ensemble des périphériques de stockage
+
+```bash
+pi@rpidemanu:/dev $ lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+mmcblk0     179:0    0 14,9G  0 disk
+├─mmcblk0p1 179:1    0  256M  0 part /boot
+└─mmcblk0p2 179:2    0 14,6G  0 part /
+```
+
+#### 2.3.2. <a name='Commandefdisk'></a>Commande `fdisk`
+
+> Utilitaire pour partionner son disque dur
+
+```bash
+pi@rpidemanu:/dev $ sudo fdisk /dev/mmcblk0
+
+Welcome to fdisk (util-linux 2.33.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help):
+```
+
+##### Commandes
+
+`m`: affiche l'aide
+
+```bash
+Help:
+
+  DOS (MBR)
+   a   toggle a bootable flag
+   b   edit nested BSD disklabel
+   c   toggle the dos compatibility flag
+
+  Generic
+   d   delete a partition
+   F   list free unpartitioned space
+   [...]
+```
+
+`p` : affiche l'état actuel de la table de partition (print)
+
+```bash
+Disk /dev/mmcblk0: 14,9 GiB, 15931539456 bytes, 31116288 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x41349f83
+
+Device         Boot  Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1        8192   532479   524288  256M  c W95 FAT32 (LBA)
+/dev/mmcblk0p2      532480 31116287 30583808 14,6G 83 Linux
+```
+
+`n`: ajoute une partition (new)
+
+```bash
+Command (m for help): n
+Partition type
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended (container for logical partitions)
+Select (default p): p # 1 - le type de partition
+Partition number (3,4, default 3): # 2 - le numéro de la partition (laissez vide pour garder la valeur par défaut)
+First sector (2048-31116287, default 2048): # 3 - le secteur où ma partition doit commencer (laissez vide pour garder la valeur par défaut)
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-8191, default 8191): +1M # 4 - la taille de la partition
+
+Created a new partition 3 of type 'Linux' and of size 1 MiB.
+```
+
+Voici la nouvelle table de partition :
+
+```bash
+Device         Boot  Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1        8192   532479   524288  256M  c W95 FAT32 (LBA)
+/dev/mmcblk0p2      532480 31116287 30583808 14,6G 83 Linux
+/dev/mmcblk0p3        2048     4095     2048    1M 83 Linux
+```
+
+`t`: modifier le type de partition (type)
+
+```bash
+Command (m for help): t
+Partition number (1-3, default 3):
+Hex code (type L to list all codes): 82
+
+Changed type of partition 'Linux' to 'Linux swap / Solaris'.
+```
+
+> Tous les changements opérés sont enregistrés en mémoire mais ne sont pas encore réellement pris en compte par nos disques. Il faut maintenant enregistrer nos changements avec la commande ci-après
+
+`w`: sauvegarder nos changements (write)
+
+```bash
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+```
+
+Si je relance la commande `lsblk`, ma partition est cette fois présente
+
+```bash
+pi@rpidemanu:/dev $ lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+mmcblk0     179:0    0 14,9G  0 disk
+├─mmcblk0p1 179:1    0  256M  0 part /boot
+├─mmcblk0p2 179:2    0 14,6G  0 part /
+└─mmcblk0p3 179:3    0    1M  0 part
+```
+
+`g` : transforme une table de partitions `DOS`en table de partitions `GPT`
+
+> Le format `DOS` ne sait pas gérer les partitions et disques d'une taille > 2To. Pour cette raison, nous devons utiliser dans certains cas le format `GPT`
+
+```bash
+Command (m for help): g
+Created a new GPT disklabel (GUID: 56935816-52FA-5B4C-80B8-2182DEB1B8D7).
+The old dos signature will be removed by a write command.
+
+Command (m for help): p
+
+Disk /dev/mmcblk0: 14,9 GiB, 15931539456 bytes, 31116288 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 56935816-52FA-5B4C-80B8-2182DEB1B8D7
+```
+
+> Le concept de partitons primaires et élémentaires n'existent plus sous le format `GPT`. La seule limitation est celle du nombre de partitions possible qui est de 128
+
+#### 2.3.3. <a name='Commandemkfs'></a>Commande `mkfs`
+
+> Créer un système de fichier
+
+```bash
+sudo mkfs -t {type} {volume}
+```
+
+```bash
+pi@rpidemanu:/dev $ sudo mkfs -t ext4 /dev/mmcblk0p3
+mke2fs 1.44.5 (15-Dec-2018)
+
+Filesystem too small for a journal
+Discarding device blocks: done
+Creating filesystem with 1024 1k blocks and 128 inodes
+
+Allocating group tables: done
+Writing inode tables: done
+Writing superblocks and filesystem accounting information: done
+```
+
+> Il existe le format ext4, xfs, et d'autres
+
+#### 2.3.4. <a name='Commandemount'></a>Commande `mount`
+
+> Monter un périphérique de stockage ou une partition sur un répertoire
+
+```bash
+sudo mount {partition_à_monter} {cible}
+```
+
+```bash
+pi@rpidemanu:/ $ sudo mount /dev/mmcblk0p3 /data-test/
+```
+
+Maintenant, toutes les données enregistrées sur `/data-test`seront aussi enregistrées dans ma partition `/mmcblk0p3`
+
+> Le montage n'est pas conservé après un redémarrage. Pour que le montage se fasse à chaque démarrage, il faut modifier le fichier `/etc/fstab`
+
+```bash
+GNU nano 3.2                            /etc/fstab
+
+proc            /proc           proc    defaults          0       0
+PARTUUID=41349f83-01  /boot           vfat    defaults          0       2
+PARTUUID=41349f83-02  /               ext4    defaults,noatime  0       1
+/dev/mmcblk0p3        /data-test      ext4    defaults        0 0
+# a swapfile is not a swap partition, no line here
+#   use  dphys-swapfile swap[on|off]  for that
+
+```
+
+Si on relance la commande `lsblk`, on remarque que ma partition est montée dans le répertoire `/data-test`
+
+```bash
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+mmcblk0     179:0    0 14,9G  0 disk
+├─mmcblk0p1 179:1    0  256M  0 part /boot
+├─mmcblk0p2 179:2    0 14,6G  0 part /
+└─mmcblk0p3 179:3    0    1M  0 part /data-test
 ```
