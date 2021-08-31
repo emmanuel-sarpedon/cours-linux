@@ -487,7 +487,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 
 `STDERR` : sortie 'erreur'
 
-`>` : redirige la sortie
+`>` : redirige la sortie standard
 
 ```bash
 ls -l > /home/pi/resultat
@@ -499,7 +499,7 @@ ls -l > /home/pi/resultat
 
 > contrairement à `>`, la double redirection ne va pas remplacer le fichier si ce dernier existe mais insère le résultat de la commande à la fin du fichier dans modifier le contenu précédent
 
-
+`2>` ou `2>>`: redirige les erreurs
 
 #### Le pipe
 
@@ -601,4 +601,170 @@ tar -xvzf ../scripts.tar.gz
 ```
 
 > décompresse mon archive qui est situé dans le répertoire parent, dans le répertoire courant
+
+---
+
+## Cours 2 : Administration Linux
+
+### RAPPELS
+
+#### Les métacaractères
+
+|         Caractère          |            Interprétation             |
+| :------------------------: | :-----------------------------------: |
+| Blanc (espace, tabulation) |              Séparateur               |
+|             *              |        Joker de nom de fichier        |
+|             $              |        Contenu d'une variable         |
+|             \              | Protection de caractère (échappement) |
+|     'xxx' (apostrophe)     |          Bloc de protection           |
+
+
+
+#### Les différents types de fichier
+
+| Symbôle |        Type de fichier        |
+| :-----: | :---------------------------: |
+|    -    |       Fichier régulier        |
+|    d    |          Répertoire           |
+|    l    |        Lien symbolique        |
+| c ou b  |    Fichiers périphériques     |
+|    p    | 'pipe' - fichier de transfert |
+|    s    |           'socket'            |
+
+
+
+#### L'arborescence de la racine `/`de la machine
+
+```bash
+pi@rpidemanu:~ $ ls /
+bin   dev  home  lost+found  mnt  proc  run   snap  sys  usr
+boot  etc  lib   media       opt  root  sbin  srv   tmp  var
+```
+
+`/bin`: programmes essentiels accessibles par l'ensemble des utilisateurs
+
+`/boot`: programmes nécessaires au démarrage de la machine
+
+`/dev`: périphériques
+
+`/etc`: fichiers de configuration système
+
+`/home`: répertoire domicile utilisateur
+
+`/lib`: bibliothèques partagées par les programmes essentiels à la machine
+
+`/media & /mnt`: supports de stockage amovibles
+
+`/opt`: arborescences de fichiers de programme optionnels
+
+`/proc`: représentation des programmes qui s'exécute dans la mémoire, sous forme de fichiers
+
+`/root`: répertoire domicile de l'utilisateur administrateur `root`
+
+`/run`: répertoire de données volatiles qui s'effacent au redémarrage liées à l'exécution des programmes
+
+`/sbin` : idem que `/bin`mais plutôt adressé à l'utilisateur `root`
+
+`/srv`: lié au réseau. Fichiers partagée par les serveurs
+
+`/sys`: évolution du dossier `/proc`
+
+`/tmp` : répertoire temporaire
+
+`/usr`: mis à disposition à tous les utilisateurs
+
+`/var`: fichiers utilisés par les programmes qui tournent en tâche de fond
+
+
+
+### LES PAQUETS LOGICIELS
+
+On utilise un gestionnaire de paquet pour mettre à jour, supprimer ou rajouter de nouveaux logiciels.
+
+Les plus connus sont `apt` sur Debian/Ubuntu, `dnf`ou `yum`sur CentOs.
+
+
+
+> Toutes modifications sur les paquets installés sur la machine sont des tâches d'administration. Il est nécessaire d'identifier en tant que *Super User* via la commande `sudo`ou `su`si vous connaissez le mot de passe de l'utilisateur `root`
+
+
+
+#### Mettre à jour les paquets
+
+```bash
+sudo apt update #mets à jour la liste des paquets et leur version
+sudo apt upgrade #télécharge et installe les paquets à mettre à jour
+```
+
+#### Chercher un paquet
+
+```bash
+sudo apt search {paquet_recherché}
+```
+
+#### Installer un paquet
+
+```bash
+sudo apt install {paquet_à_installer}
+```
+
+#### Supprimer un paquet
+
+```bash
+sudo apt remove {paquet_à_désinstaller}
+```
+
+
+
+> Sur certaines distributions, on peut aussi utiliser le gestionnaire `snap`. Certains éditeurs de logiciels préférent ce gestionnaire pour héberger eux-même leurs paquets
+
+
+
+#### Installer les logiciels depuis les sources
+
+On lance le programme `configure`qui est présent dans le code source du programme téléchargé. `configure`vérifie que l'ensemble des dépendances nécessaires au programme soient bien installées sur la machine. Sinon, il renvoie la liste des dépendances manquantes.
+
+```bash
+sudo ./configure #vérifie les dépendances installées
+sudo make #compile le code source
+sudo make install #installe le programme sur la machine
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
