@@ -1,51 +1,63 @@
+<!-- vscode-markdown-toc -->
+
+- [Cours 1 : Les commandes du terminal](#Cours1:Lescommandesduterminal)
+  - [CREER DES LIENS SYMBOLIQUES](#CREERDESLIENSSYMBOLIQUES)
+  - [VISUALISER LE CONTENU D'UN FICHIER](#VISUALISERLECONTENUDUNFICHIER)
+    - [Commande `cat`](#Commandecat)
+    - [ Commande `less`](#Commandeless)
+    - [Commande `tail`](#Commandetail)
+    - [Commande `head`](#Commandehead)
+    - [Commande `strings`](#Commandestrings)
+  - [AFFICHER LES STATS D'UN FICHIER](#AFFICHERLESSTATSDUNFICHIER)
+    - [Commande `stat`](#Commandestat)
+    - [Commande `wc`](#Commandewc)
+    - [Commande `du`](#Commandedu)
+    - [Commande `df`](#Commandedf)
+  - [MANIPULER LES PERMISSIONS](#MANIPULERLESPERMISSIONS)
+    - [Les permissions](#Lespermissions)
+    - [Commande `chmod`](#Commandechmod)
+    - [Exécuter des commandes en tant que superuser](#Excuterdescommandesentantquesuperuser)
+  - [EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS](#EFFECTUERDESRECHERCHESETAUTRESOPERATIONS)
+    - [Commande `find`](#Commandefind)
+    - [Commande `grep`](#Commandegrep)
+    - [Le remplacement par "globbing"](#Leremplacementparglobbing)
+    - [La redirection](#Laredirection)
+    - [Le pipe](#Lepipe)
+    - [Aller plus loin avec `find`](#Allerplusloinavecfind)
+    - [Compresser et décompresser avec `tar`](#Compresseretdcompresseravectar)
+- [Cours 2 : Administration Linux](#Cours2:AdministrationLinux)
+  - [RAPPELS](#RAPPELS)
+    - [Les métacaractères](#Lesmtacaractres)
+    - [Les différents types de fichier](#Lesdiffrentstypesdefichier)
+    - [L'arborescence de la racine `/`de la machine](#Larborescencedelaracinedelamachine)
+  - [LES PAQUETS LOGICIELS](#LESPAQUETSLOGICIELS)
+    - [Mettre à jour les paquets](#Mettrejourlespaquets)
+    - [Chercher un paquet](#Chercherunpaquet)
+    - [Installer un paquet](#Installerunpaquet)
+    - [Supprimer un paquet](#Supprimerunpaquet)
+    - [Installer les logiciels depuis les sources](#Installerleslogicielsdepuislessources)
+
+<!-- vscode-markdown-toc-config
+	numbering=false
+	autoSave=false
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
 # Linux
-
-## Sommaire
-
-### [Cours 1 - Les commandes du terminal](#cours-1-:-les-commandes-du-terminal)
-
-1. [Créer des liens symboliques](#creer-des-liens-symboliques)
-
-2. [Visualiser le contenu d'un fichier](#visualiser-le-contenu-dun-fichier)
-   1. [Commande `cat`](#commande-cat)
-   2. [Commande `less`](#commande-less)
-   3. [Commande `tail`](#commande-tail)
-   4. [Commande `head`](#commande-head)
-   5. [Commande `strings`](#commande-strings)
-
-3. [Afficher les stats d'un fichier](#afficher-les-stats-dun-fichier)
-   1. [Commande `stat`](#commande-stat)
-   2. [Commande `wc`](#commande-wc)
-   3. [Commande `du`](#commande-du)
-   4. [Commande `df`](#commande-df)
-4. [Manipuler les permissions](#manipuler-les-permissions)
-   1. [Les permissions](#les-permissions)
-   2. [Commande `chmod`](#commande-chmod)
-   3. [Exécuter des commandes en tant que superuser](#exécuter-des-commandes-en-tant-que-superuser)
-5. [Effectuer des recherches et autres opérations](#effectuer-des-recherches-et-autres-operations)
-   1. [Commande `find`](#commande-find)
-   2. [Commande `grep`](#commande-grep)
-   3. [Remplacement par "globbing"](#le-remplacement-"par-globbing")
-   4. [La redirection](#la-redirection)
-   5. [Le pipe](#le-pipe)
-   6. [Aller plus loin avec `find`](#aller-plus-loin-avec-find)
-   7. [Compresser et décompresser avec `tar`](#compresser-et-décompresser-avec-tar)
 
 ---
 
-## Cours 1 : Les commandes du terminal
+## <a name='Cours1:Lescommandesduterminal'></a>Cours 1 : Les commandes du terminal
 
-### CREER DES LIENS SYMBOLIQUES
+### <a name='CREERDESLIENSSYMBOLIQUES'></a>CREER DES LIENS SYMBOLIQUES
 
 ```bash
 ln -s {fichier ou dossier pointé} {nom_du_lien}
 ```
 
+### <a name='VISUALISERLECONTENUDUNFICHIER'></a>VISUALISER LE CONTENU D'UN FICHIER
 
-
-### VISUALISER LE CONTENU D'UN FICHIER
-
-#### Commande `cat`
+#### <a name='Commandecat'></a>Commande `cat`
 
 ```bash
 cat {nom_du_fichier}
@@ -61,9 +73,7 @@ cat {nom_du_fichier}
 
 > Le problème de `cat`c'est que l'ensemble du fichier est affiché (pose souci pour les fichiers très longs ... )
 
-
-
-#### 	Commande `less`
+#### <a name='Commandeless'></a> Commande `less`
 
 > La commande `less` lance d'une certaine façon, un éditeur de texte en lecture seule pour lire le fichier et y naviguer, en commançant par le haut du fichier
 
@@ -85,9 +95,7 @@ less {nom_du_fichier}
 
 `n`: _next_ - continuer la recherche
 
-
-
-#### Commande `tail`
+#### <a name='Commandetail'></a>Commande `tail`
 
 > Affiche les 10 dernières lignes du fichier (par défaut)
 
@@ -101,9 +109,7 @@ tail {nom_du_fichier}
 
 `-n{integer}`: afficher le nombre de ligne passé en paramètre (au lieu des 10 lignes par défaut )
 
-
-
-#### Commande `head`
+#### <a name='Commandehead'></a>Commande `head`
 
 > Affiche les 10 premières lignes du fichier (par défaut)
 
@@ -111,9 +117,7 @@ tail {nom_du_fichier}
 head {nom_du_fichier}
 ```
 
-
-
-#### Commande `strings`
+#### <a name='Commandestrings'></a>Commande `strings`
 
 > Extrait les chaînes de caractère compilés d'un fichier ou même d'un exécutable et les affiche à l'écran
 
@@ -121,11 +125,9 @@ head {nom_du_fichier}
 strings {nom_du_fichier}
 ```
 
+### <a name='AFFICHERLESSTATSDUNFICHIER'></a>AFFICHER LES STATS D'UN FICHIER
 
-
-### AFFICHER LES STATS D'UN FICHIER
-
-#### Commande `stat`
+#### <a name='Commandestat'></a>Commande `stat`
 
 ```bash
 stat {nom_du_fichier}
@@ -142,9 +144,7 @@ Modif. : 2021-08-27 13:24:02.846841408 +0400
 Changt : 2021-08-27 13:2
 ```
 
-
-
-#### Commande `wc`
+#### <a name='Commandewc'></a>Commande `wc`
 
 ```bash
 wc {nom_du_fichier}
@@ -158,9 +158,7 @@ pi@rpidemanu:/var $ wc log/syslog
 > - Le nombre de mots (3289)
 > - Le nombre d'octets (25077)
 
-
-
-#### Commande `du`
+#### <a name='Commandedu'></a>Commande `du`
 
 > _**D**isk **U**sage_ : affiche une taille en nombre de blocs.. pas très pratique en l'état, on utilisera donc les options ci-dessous
 
@@ -174,9 +172,7 @@ pi@rpidemanu:/var $ wc log/syslog
 
 `-s` : afficher uniquement le total
 
-
-
-#### Commande `df`
+#### <a name='Commandedf'></a>Commande `df`
 
 > Affiche le taille des périphériques montés sur la machine
 
@@ -193,9 +189,7 @@ tmpfs              2,1G       0  2,1G   0% /sys/fs/cgroup
 tmpfs              403M    4,1k  403M   1% /run/user/1000
 ```
 
-
-
-### MANIPULER LES PERMISSIONS
+### <a name='MANIPULERLESPERMISSIONS'></a>MANIPULER LES PERMISSIONS
 
 ```ba
 pi@rpidemanu:~ $ ls -l
@@ -211,7 +205,7 @@ drwxr-xr-x 2 pi pi 4096 mai    7 19:07 Templates
 drwxr-xr-x 2 pi pi 4096 mai    7 19:07 Videos
 ```
 
-#### Les permissions
+#### <a name='Lespermissions'></a>Les permissions
 
 r : read
 
@@ -225,7 +219,7 @@ Il y a trois blocs :
 - Le groupe propriétaire
 - Tout le monde
 
-#### Commande `chmod`
+#### <a name='Commandechmod'></a>Commande `chmod`
 
 > Modifie les permissions d'un fichier
 
@@ -280,8 +274,6 @@ Pour mettre ces permissions sur le répertoire on taperait donc la commande :
 chmod 750 Documents
 ```
 
-
-
 **2 - En gérant chaque droit séparément**
 
 1. À qui s'applique le changement
@@ -322,27 +314,21 @@ On peut aussi combiner plusieurs actions en même temps :
 chmod u+rwx,g+rx-w,o+r-wx fichier3
 ```
 
-
-
-#### Exécuter des commandes en tant que superuser
+#### <a name='Excuterdescommandesentantquesuperuser'></a>Exécuter des commandes en tant que superuser
 
 `sudo` : _Super User Do_ : exécute une commande en tant que superutilisateur
 
 `sudo su` : permet de rester superutilisateur pendant un laps de temps déterminé par le système
 
+### <a name='EFFECTUERDESRECHERCHESETAUTRESOPERATIONS'></a>EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
 
-
-### EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
-
-#### Commande `find`
+#### <a name='Commandefind'></a>Commande `find`
 
 ```bash
 find {repertoire_de_recherche} {-option} {critere_de_recherche} {action}
 ```
 
 > Contrairement aux autres commandes, les options sont nommés par leur nom complet et non pas par une seule lettre. De plus, même si on le nomme par son nom complet, on ne mettra qu'un tiret devant l'option
-
-
 
 ```bash
 pi@rpidemanu:~ $ find /home/pi/Documents/raspberry-script/ -name fan* -print
@@ -357,8 +343,6 @@ pi@rpidemanu:~ $ find /home/pi/Documents/raspberry-script/ -name fan* -print
 > {critere_de_recherche} : `fan*` - soit tous les fichiers commençant par "fan[...]"
 >
 > {action} : `-print` - affiche tous les résultats de la recherche
-
-
 
 ##### Options de recherche
 
@@ -396,9 +380,9 @@ pi@rpidemanu:~ $ find /home/pi/ -path /home/pi/*/cputemp -print
 /var/cache/cups/job.cache.O
 ```
 
->ci-dessus, on recherche tous les fichiers qui ont été accédé depuis **1** jour
+> ci-dessus, on recherche tous les fichiers qui ont été accédé depuis **1** jour
 
-`-ctime` :  recherche le(s) fichiers **c**hangé(s) depuis x _jours_
+`-ctime` : recherche le(s) fichiers **c**hangé(s) depuis x _jours_
 
 `-mtime` : recherche le(s) fichiers **m**odifié(s) depuis x _jours_
 
@@ -424,9 +408,7 @@ pi@rpidemanu:~/Documents $ find / -anewer /home/pi/Documents/raspberry-script/cp
 >
 > recherche tous les **répertoires**, **vides** accédés après `/home/pi/Documents/raspberry-script/cputemp`
 
-
-
-#### Commande `grep`
+#### <a name='Commandegrep'></a>Commande `grep`
 
 ```bash
 grep {RegExp} {fichier_repertoire}
@@ -457,9 +439,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 
 > affiche les fichiers (`-l`) qui contiennent le mot "gpio" dans le dossier courant, ainsi que les sous-dossiers (`-r`)
 
-
-
-#### Le remplacement par "globbing"
+#### <a name='Leremplacementparglobbing'></a>Le remplacement par "globbing"
 
 `*` : remplace par n'importe quel(s) caractère(s)
 
@@ -477,9 +457,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 >
 > `ls [^ws]??` : liste les fichiers ne commençant pas par w ou s et ayant trois caractères au total
 
-
-
-#### La redirection
+#### <a name='Laredirection'></a>La redirection
 
 `STDIN`: entrée standard
 
@@ -501,7 +479,7 @@ ls -l > /home/pi/resultat
 
 `2>` ou `2>>`: redirige les erreurs
 
-#### Le pipe
+#### <a name='Lepipe'></a>Le pipe
 
 > avec le 'pipe' on peut "rediriger" la sortie `STDOUT` d'une commande vers le `STDIN` d'une autre commande
 
@@ -520,9 +498,7 @@ Bookshelf
 
 > `ls`renvoie la liste des fichiers/dossiers présents dans le répertoire courant, envoie le résultat vers la commande `sort`qui se charge d'inverser le résultat grâce à l'option `-r`
 
-
-
-#### Aller plus loin avec `find`
+#### <a name='Allerplusloinavecfind'></a>Aller plus loin avec `find`
 
 `-exec` : exécute une commande pour chaque résultat trouvé
 
@@ -533,11 +509,9 @@ pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -exec grep -il 'gpio
 /home/pi/Documents/raspberry-script/fanon
 ```
 
-> `{}`sera remplacé par chaque résultat de `find` 
+> `{}`sera remplacé par chaque résultat de `find`
 >
 > `;` sert à prévenir la commande `find`que la boucle est terminée. On l'échappe pour éviter que le caractère `;` soit interprété : `\;`
-
-
 
 On pourrait utiliser un pipe au lieu d'option `-exec`
 
@@ -552,17 +526,13 @@ pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 g
 >
 > `xargs`récupère comme argument chaque résultat précédent le pipe (la sortie `STDOUT`)
 
-
-
 On pourrait ensuite supprimer les fichiers trouvés par la commande
 
 ```bash
 pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 grep -il 'gpio' | xargs rm
 ```
 
-
-
-#### Compresser et décompresser avec `tar`
+#### <a name='Compresseretdcompresseravectar'></a>Compresser et décompresser avec `tar`
 
 ```bash
 tar -czvf mon-fichier.tar.gz .
@@ -586,41 +556,35 @@ tar -czvf scripts.tar.gz .
 
 > crée une archive 'scripts.tar.gz' à partir des fichiers présents dans le répertoire courant
 
-
-
 ```bash
 tar -tzvf scripts.tar.gz
 ```
 
 > affiche le contenu de mon archive
 
-
-
 ```bash
-tar -xvzf ../scripts.tar.gz 
+tar -xvzf ../scripts.tar.gz
 ```
 
 > décompresse mon archive qui est situé dans le répertoire parent, dans le répertoire courant
 
 ---
 
-## Cours 2 : Administration Linux
+## <a name='Cours2:AdministrationLinux'></a>Cours 2 : Administration Linux
 
-### RAPPELS
+### <a name='RAPPELS'></a>RAPPELS
 
-#### Les métacaractères
+#### <a name='Lesmtacaractres'></a>Les métacaractères
 
 |         Caractère          |            Interprétation             |
 | :------------------------: | :-----------------------------------: |
 | Blanc (espace, tabulation) |              Séparateur               |
-|             *              |        Joker de nom de fichier        |
+|             \*             |        Joker de nom de fichier        |
 |             $              |        Contenu d'une variable         |
 |             \              | Protection de caractère (échappement) |
 |     'xxx' (apostrophe)     |          Bloc de protection           |
 
-
-
-#### Les différents types de fichier
+#### <a name='Lesdiffrentstypesdefichier'></a>Les différents types de fichier
 
 | Symbôle |        Type de fichier        |
 | :-----: | :---------------------------: |
@@ -631,9 +595,7 @@ tar -xvzf ../scripts.tar.gz
 |    p    | 'pipe' - fichier de transfert |
 |    s    |           'socket'            |
 
-
-
-#### L'arborescence de la racine `/`de la machine
+#### <a name='Larborescencedelaracinedelamachine'></a>L'arborescence de la racine `/`de la machine
 
 ```bash
 pi@rpidemanu:~ $ ls /
@@ -675,52 +637,42 @@ boot  etc  lib   media       opt  root  sbin  srv   tmp  var
 
 `/var`: fichiers utilisés par les programmes qui tournent en tâche de fond
 
-
-
-### LES PAQUETS LOGICIELS
+### <a name='LESPAQUETSLOGICIELS'></a>LES PAQUETS LOGICIELS
 
 On utilise un gestionnaire de paquet pour mettre à jour, supprimer ou rajouter de nouveaux logiciels.
 
 Les plus connus sont `apt` sur Debian/Ubuntu, `dnf`ou `yum`sur CentOs.
 
+> Toutes modifications sur les paquets installés sur la machine sont des tâches d'administration. Il est nécessaire d'identifier en tant que _Super User_ via la commande `sudo`ou `su`si vous connaissez le mot de passe de l'utilisateur `root`
 
-
-> Toutes modifications sur les paquets installés sur la machine sont des tâches d'administration. Il est nécessaire d'identifier en tant que *Super User* via la commande `sudo`ou `su`si vous connaissez le mot de passe de l'utilisateur `root`
-
-
-
-#### Mettre à jour les paquets
+#### <a name='Mettrejourlespaquets'></a>Mettre à jour les paquets
 
 ```bash
 sudo apt update #mets à jour la liste des paquets et leur version
 sudo apt upgrade #télécharge et installe les paquets à mettre à jour
 ```
 
-#### Chercher un paquet
+#### <a name='Chercherunpaquet'></a>Chercher un paquet
 
 ```bash
 sudo apt search {paquet_recherché}
 ```
 
-#### Installer un paquet
+#### <a name='Installerunpaquet'></a>Installer un paquet
 
 ```bash
 sudo apt install {paquet_à_installer}
 ```
 
-#### Supprimer un paquet
+#### <a name='Supprimerunpaquet'></a>Supprimer un paquet
 
 ```bash
 sudo apt remove {paquet_à_désinstaller}
 ```
 
-
-
 > Sur certaines distributions, on peut aussi utiliser le gestionnaire `snap`. Certains éditeurs de logiciels préférent ce gestionnaire pour héberger eux-même leurs paquets
 
-
-
-#### Installer les logiciels depuis les sources
+#### <a name='Installerleslogicielsdepuislessources'></a>Installer les logiciels depuis les sources
 
 On lance le programme `configure`qui est présent dans le code source du programme téléchargé. `configure`vérifie que l'ensemble des dépendances nécessaires au programme soient bien installées sur la machine. Sinon, il renvoie la liste des dépendances manquantes.
 
@@ -729,42 +681,3 @@ sudo ./configure #vérifie les dépendances installées
 sudo make #compile le code source
 sudo make install #installe le programme sur la machine
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
