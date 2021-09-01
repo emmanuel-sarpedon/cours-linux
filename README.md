@@ -55,6 +55,8 @@ _Table des matières_
   - 2.5. [LES SERVICES](#LESSERVICES)
     - 2.5.1. [Le programme `systemd` via `systemctl`](#Leprogrammesystemdviasystemctl)
     - 2.5.2. [Analyse du temps de démarrage des services](#Analysedutempsdedmarragedesservices)
+  - 2.6. [LE GESTIONNAIRE DE LOGS : `syslog`](#LEGESTIONNAIREDELOGS:syslog)
+    - 2.6.1. [Configurer `rsyslog`](#Configurerrsyslog)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -1081,3 +1083,72 @@ pi@rpidemanu:~ $ systemd-analyze plot > boot.svg
 > Noter la redirection vers un fichier
 >
 > La commande `plot` va générer un SVG inutilisable si on l'affiche sur la sortie standard, raison pour laquelle on demande la création d'un fichier
+
+### 2.6. <a name='LEGESTIONNAIREDELOGS:syslog'></a>LE GESTIONNAIRE DE LOGS : `syslog`
+
+`Syslog` est un canal de communication pour les programmes et les services n'utilisant pas le terminal et donc ne pouvant pas envoyer des informations dans la sortie standard.
+
+En fonction de l'importance et de la gravité du message, on choisira soit d'enregistrer le log dans un fichier ou de l'afficher dans le terminal d'un utilisateur connecté, par l'intermédiaire d'un programme tiers comme `rsyslog`
+
+Les critères de sélection dépendant de la structure des messages :
+
+- 1- Horodatage
+- 2- Provenance : _kernel, user, mail, daemon, syslog, lp, ntp, uucp, ftp, etc._
+
+- 3- Importance : _par ordre d'importance_
+
+  - debug
+  - info
+  - notice
+  - warn : attention
+  - err : erreur
+  - crit : erreur critique
+  - alert : alerte
+  - emerg : urgent
+
+- 4- Message
+
+#### 2.6.1. <a name='Configurerrsyslog'></a>Configurer `rsyslog`
+
+Dans la plupart des distribution, le fichier de configuration se trouve dans le répertoire `/etc/rsyslog.conf`
+
+On s'intéressera à la partie du fichier qui se nomme `#### RULES ####`
+
+```bash
+###############
+#### RULES ####
+###############
+
+#
+# First some standard log files.  Log by facility.
+#
+#PROVENANCE.IMPORTANCE			DESTINATION
+auth,authpriv.*                 /var/log/auth.log
+*.*;auth,authpriv.none          -/var/log/syslog
+#cron.*                         /var/log/cron.log
+daemon.*                        -/var/log/daemon.log
+kern.*                          -/var/log/kern.log
+lpr.*                           -/var/log/lpr.log
+mail.*                          -/var/log/mail.log
+user.*                          -/var/log/user.log
+
+#
+# Logging for the mail system.  Split it up so that
+# it is easy to write scripts to parse these files.
+#
+mail.info                       -/var/log/mail.info
+mail.warn                       -/var/log/mail.warn
+mail.err                        /var/log/mail.err
+
+[...]
+```
+
+|     Définition des règles de sélection     |                                                       Explication                                                       |
+| :----------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: |
+|                  `mail.*`                  |                                       Provenance : `mail`, Importance: quelconque                                       |
+|                 `mail.err`                 |                                        Provenance : `mail`, Importance: >= `err`                                        |
+| `*.info;mail.none;authpriv.none;cron.none` | Tous les messages dont l'importance est `info` ou supérieur, sauf les messages provenant de `mail`, `authpriv` et`cron` |
+
+> Pour que le système prend en compte la modification du fichier de configuration de `rsyslog`, il faudra redémarrer le service
+>
+> `systemctl restart rsyslog`
