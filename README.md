@@ -51,8 +51,10 @@ _Table des matières_
     - 2.3.4. [Commande `mount`](#Commandemount)
   - 2.4. [LE RESEAU](#LERESEAU)
     - 2.4.1. [Le Network Manager](#LeNetworkManager)
-  - 2.5. [Les fichiers de configuration](#Lesfichiersdeconfiguration)
-  - 2.6. [LES SERVICES](#LESSERVICES)
+    - 2.4.2. [Les fichiers de configuration](#Lesfichiersdeconfiguration)
+  - 2.5. [LES SERVICES](#LESSERVICES)
+    - 2.5.1. [Le programme `systemd` via `systemctl`](#Leprogrammesystemdviasystemctl)
+    - 2.5.2. [Analyse du temps de démarrage des services](#Analysedutempsdedmarragedesservices)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -940,8 +942,142 @@ NAME                 UUID                                  TYPE      DEVICE
 Connexion filaire 1  cf521997-c08a-3968-91c9-c9a693ef2340  ethernet  --
 ```
 
-### 2.5. <a name='Lesfichiersdeconfiguration'></a>Les fichiers de configuration
+#### 2.4.2. <a name='Lesfichiersdeconfiguration'></a>Les fichiers de configuration
 
 > Sous Debian, le fichier de configuration réseau se trouve dans `/etc/network/interfaces`
 
-### 2.6. <a name='LESSERVICES'></a>LES SERVICES
+### 2.5. <a name='LESSERVICES'></a>LES SERVICES
+
+> Un 'daemon' ou service est un programme qui s'exécute indépendamment de l'utilisateur et en tâche de fond
+
+#### 2.5.1. <a name='Leprogrammesystemdviasystemctl'></a>Le programme `systemd` via `systemctl`
+
+> C'est une pièce maîtresse de l'architecture [GNU](https://doc.ubuntu-fr.org/gnu)/[Linux](https://doc.ubuntu-fr.org/linux). En effet, c'est le premier programme lancé par le noyau (il a donc le PID N°1) et il se charge de lancer tous les programmes suivants en ordre jusqu'à obtenir un système opérationnel pour l'utilisateur, selon le mode déterminé (single user, multi-user, graphique). C'est également à lui qu'incombe la tache de redémarrer ou arrêter votre ordinateur proprement. [SOURCE: https://doc.ubuntu-fr.org/systemd]
+
+On utilisera l'interface `systemctl` pour communiquer avec `systemd`
+
+```bash
+pi@rpidemanu:~ $ systemctl -t service
+UNIT                                       LOAD   ACTIVE SUB     DESCRIPTION
+alsa-restore.service                       loaded active exited  Save/Restore Sound Card [...]
+```
+
+##### Commandes `systemctl`
+
+Pour savoir si un service est en train de tourner
+
+```bash
+systemctl is-active {service}
+```
+
+```bash
+pi@rpidemanu:~ $ systemctl is-active alsa-state.service
+active
+pi@rpidemanu:~ $ systemctl is-active httpd
+inactive
+```
+
+Pour connaître l'état d'un service
+
+```bash
+systemctl status {service}
+```
+
+```bash
+pi@rpidemanu:~ $ systemctl status alsa-state.service
+● alsa-state.service - Manage Sound Card State (restore and store)
+   Loaded: loaded (/lib/systemd/system/alsa-state.service; static; vendor preset: enabled)
+   Active: active (running) since Tue 2021-08-31 14:12:41 +04; 20h ago
+     Docs: man:alsactl(1)
+ Main PID: 389 (alsactl)
+    Tasks: 1 (limit: 4915)
+   CGroup: /system.slice/alsa-state.service
+           └─389 /usr/sbin/alsactl -E HOME=/run/alsa -s -n 19 -c rdaemon
+
+août 31 14:12:41 rpidemanu systemd[1]: Started Manage Sound Card State (restore and store).
+août 31 14:12:41 rpidemanu alsactl[389]: alsactl 1.1.8 daemon started
+```
+
+Pour **arrêter** un service
+
+```bash
+systemctl stop {service}
+```
+
+Pour **démarrer** un service
+
+```bash
+systemctl start {service}
+```
+
+Pour **redémarrer** un service
+
+```bash
+systemctl restart {service}
+```
+
+Pour **empêcher** un service de démarrer en même temps que le boot de la machine
+
+```bash
+systemctl disable {service}
+```
+
+Pour **permettre** un service de démarrer en même temps que le boot de la machine
+
+```bash
+systemctl enable {service}
+```
+
+Pour **connaître** l'état du système
+
+```bash
+systemctl is-system-running
+```
+
+Pour identifier le(s) système(s) qui pose(ent) problème
+
+```bash
+systemctl --failed
+```
+
+Pour remettre le système dans son état normal malgré un service en échec (dans le cas où l'administrateur estime que le service n'est pas critique)
+
+```bash
+systemctl reset-failed
+```
+
+#### 2.5.2. <a name='Analysedutempsdedmarragedesservices'></a>Analyse du temps de démarrage des services
+
+```bash
+pi@rpidemanu:~ $ systemd-analyze
+Startup finished in 2.420s (kernel) + 8.269s (userspace) = 10.690s
+graphical.target reached after 8.184s in userspace
+```
+
+Pour avoir le détail du temps de démarrage de chaque service
+
+```bash
+pi@rpidemanu:~ $ systemd-analyze blame
+         31.376s apt-daily.service
+         31.343s apt-daily-upgrade.service
+          2.522s man-db.service
+          2.193s dev-mmcblk0p2.device
+          2.155s udisks2.service
+          1.881s logrotate.service
+          1.699s rpi-eeprom-update.service
+          1.588s snapd.service
+           801ms lightdm.service
+           754ms dphys-swapfile.service
+           736ms plymouth-quit-wait.service
+          [...]
+```
+
+Pour un affichage graphique
+
+```bash
+pi@rpidemanu:~ $ systemd-analyze plot > boot.svg
+```
+
+> Noter la redirection vers un fichier
+>
+> La commande `plot` va générer un SVG inutilisable si on l'affiche sur la sortie standard, raison pour laquelle on demande la création d'un fichier
