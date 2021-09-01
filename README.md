@@ -4,59 +4,63 @@ https://github.com/emmanuel-sarpedon/cours-linux
 
 ---
 
-_Table des matières_
+## 1. <a name='Tabledesmatires_'></a>_Table des matières_
 
 <!-- vscode-markdown-toc -->
 
-- 1. [Cours 1 : Les commandes du terminal](#Cours1:Lescommandesduterminal)
-  - 1.1. [CREER DES LIENS SYMBOLIQUES](#CREERDESLIENSSYMBOLIQUES)
-  - 1.2. [VISUALISER LE CONTENU D'UN FICHIER](#VISUALISERLECONTENUDUNFICHIER)
-    - 1.2.1. [Commande `cat`](#Commandecat)
-    - 1.2.2. [ Commande `less`](#Commandeless)
-    - 1.2.3. [Commande `tail`](#Commandetail)
-    - 1.2.4. [Commande `head`](#Commandehead)
-    - 1.2.5. [Commande `strings`](#Commandestrings)
-  - 1.3. [AFFICHER LES STATS D'UN FICHIER](#AFFICHERLESSTATSDUNFICHIER)
-    - 1.3.1. [Commande `stat`](#Commandestat)
-    - 1.3.2. [Commande `wc`](#Commandewc)
-    - 1.3.3. [Commande `du`](#Commandedu)
-    - 1.3.4. [Commande `df`](#Commandedf)
-  - 1.4. [MANIPULER LES PERMISSIONS](#MANIPULERLESPERMISSIONS)
-    - 1.4.1. [Les permissions](#Lespermissions)
-    - 1.4.2. [Commande `chmod`](#Commandechmod)
-    - 1.4.3. [Exécuter des commandes en tant que superuser](#Excuterdescommandesentantquesuperuser)
-  - 1.5. [EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS](#EFFECTUERDESRECHERCHESETAUTRESOPERATIONS)
-    - 1.5.1. [Commande `find`](#Commandefind)
-    - 1.5.2. [Commande `grep`](#Commandegrep)
-    - 1.5.3. [Le remplacement par "globbing"](#Leremplacementparglobbing)
-    - 1.5.4. [La redirection](#Laredirection)
-    - 1.5.5. [Le pipe](#Lepipe)
-    - 1.5.6. [Aller plus loin avec `find`](#Allerplusloinavecfind)
-    - 1.5.7. [Compresser et décompresser avec `tar`](#Compresseretdcompresseravectar)
-- 2. [Cours 2 : Administration Linux](#Cours2:AdministrationLinux)
-  - 2.1. [RAPPELS](#RAPPELS)
-    - 2.1.1. [Les métacaractères](#Lesmtacaractres)
-    - 2.1.2. [Les différents types de fichier](#Lesdiffrentstypesdefichier)
-    - 2.1.3. [L'arborescence de la racine `/`de la machine](#Larborescencedelaracinedelamachine)
-  - 2.2. [LES PAQUETS LOGICIELS](#LESPAQUETSLOGICIELS)
-    - 2.2.1. [Mettre à jour les paquets](#Mettrejourlespaquets)
-    - 2.2.2. [Chercher un paquet](#Chercherunpaquet)
-    - 2.2.3. [Installer un paquet](#Installerunpaquet)
-    - 2.2.4. [Supprimer un paquet](#Supprimerunpaquet)
-    - 2.2.5. [Installer les logiciels depuis les sources](#Installerleslogicielsdepuislessources)
-  - 2.3. [LE STOCKAGE](#LESTOCKAGE)
-    - 2.3.1. [Commande `lsblk`](#Commandelsblk)
-    - 2.3.2. [Commande `fdisk`](#Commandefdisk)
-    - 2.3.3. [Commande `mkfs`](#Commandemkfs)
-    - 2.3.4. [Commande `mount`](#Commandemount)
-  - 2.4. [LE RESEAU](#LERESEAU)
-    - 2.4.1. [Le Network Manager](#LeNetworkManager)
-    - 2.4.2. [Les fichiers de configuration](#Lesfichiersdeconfiguration)
-  - 2.5. [LES SERVICES](#LESSERVICES)
-    - 2.5.1. [Le programme `systemd` via `systemctl`](#Leprogrammesystemdviasystemctl)
-    - 2.5.2. [Analyse du temps de démarrage des services](#Analysedutempsdedmarragedesservices)
-  - 2.6. [LE GESTIONNAIRE DE LOGS : `syslog`](#LEGESTIONNAIREDELOGS:syslog)
-    - 2.6.1. [Configurer `rsyslog`](#Configurerrsyslog)
+- 1. [_Table des matières_](#Tabledesmatires_)
+- 2. [Cours 1 : Les commandes du terminal](#Cours1:Lescommandesduterminal)
+  - 2.1. [CREER DES LIENS SYMBOLIQUES](#CREERDESLIENSSYMBOLIQUES)
+  - 2.2. [VISUALISER LE CONTENU D'UN FICHIER](#VISUALISERLECONTENUDUNFICHIER)
+    - 2.2.1. [Commande `cat`](#Commandecat)
+    - 2.2.2. [ Commande `less`](#Commandeless)
+    - 2.2.3. [Commande `tail`](#Commandetail)
+    - 2.2.4. [Commande `head`](#Commandehead)
+    - 2.2.5. [Commande `strings`](#Commandestrings)
+  - 2.3. [AFFICHER LES STATS D'UN FICHIER](#AFFICHERLESSTATSDUNFICHIER)
+    - 2.3.1. [Commande `stat`](#Commandestat)
+    - 2.3.2. [Commande `wc`](#Commandewc)
+    - 2.3.3. [Commande `du`](#Commandedu)
+    - 2.3.4. [Commande `df`](#Commandedf)
+  - 2.4. [MANIPULER LES PERMISSIONS](#MANIPULERLESPERMISSIONS)
+    - 2.4.1. [Les permissions](#Lespermissions)
+    - 2.4.2. [Commande `chmod`](#Commandechmod)
+    - 2.4.3. [Exécuter des commandes en tant que superuser](#Excuterdescommandesentantquesuperuser)
+  - 2.5. [EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS](#EFFECTUERDESRECHERCHESETAUTRESOPERATIONS)
+    - 2.5.1. [Commande `find`](#Commandefind)
+    - 2.5.2. [Commande `grep`](#Commandegrep)
+    - 2.5.3. [Le remplacement par "globbing"](#Leremplacementparglobbing)
+    - 2.5.4. [La redirection](#Laredirection)
+    - 2.5.5. [Le pipe](#Lepipe)
+    - 2.5.6. [Aller plus loin avec `find`](#Allerplusloinavecfind)
+    - 2.5.7. [Compresser et décompresser avec `tar`](#Compresseretdcompresseravectar)
+- 3. [Cours 2 : Administration Linux](#Cours2:AdministrationLinux)
+  - 3.1. [RAPPELS](#RAPPELS)
+    - 3.1.1. [Les métacaractères](#Lesmtacaractres)
+    - 3.1.2. [Les différents types de fichier](#Lesdiffrentstypesdefichier)
+    - 3.1.3. [L'arborescence de la racine `/`de la machine](#Larborescencedelaracinedelamachine)
+  - 3.2. [LES PAQUETS LOGICIELS](#LESPAQUETSLOGICIELS)
+    - 3.2.1. [Mettre à jour les paquets](#Mettrejourlespaquets)
+    - 3.2.2. [Chercher un paquet](#Chercherunpaquet)
+    - 3.2.3. [Installer un paquet](#Installerunpaquet)
+    - 3.2.4. [Supprimer un paquet](#Supprimerunpaquet)
+    - 3.2.5. [Installer les logiciels depuis les sources](#Installerleslogicielsdepuislessources)
+  - 3.3. [LE STOCKAGE](#LESTOCKAGE)
+    - 3.3.1. [Commande `lsblk`](#Commandelsblk)
+    - 3.3.2. [Commande `fdisk`](#Commandefdisk)
+    - 3.3.3. [Commande `mkfs`](#Commandemkfs)
+    - 3.3.4. [Commande `mount`](#Commandemount)
+  - 3.4. [LE RESEAU](#LERESEAU)
+    - 3.4.1. [Le Network Manager](#LeNetworkManager)
+    - 3.4.2. [Les fichiers de configuration](#Lesfichiersdeconfiguration)
+  - 3.5. [LES SERVICES](#LESSERVICES)
+    - 3.5.1. [Le programme `systemd` via `systemctl`](#Leprogrammesystemdviasystemctl)
+    - 3.5.2. [Analyse du temps de démarrage des services](#Analysedutempsdedmarragedesservices)
+  - 3.6. [LE GESTIONNAIRE DE LOGS : `syslog`](#LEGESTIONNAIREDELOGS:syslog)
+    - 3.6.1. [Configurer `rsyslog`](#Configurerrsyslog)
+  - 3.7. [AUTOMATISER LES COMMANDES](#AUTOMATISERLESCOMMANDES)
+    - 3.7.1. [Le service `cron`](#Leservicecron)
+    - 3.7.2. [Le service `at`](#Leserviceat)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -66,17 +70,17 @@ _Table des matières_
 
 ---
 
-## 1. <a name='Cours1:Lescommandesduterminal'></a>Cours 1 : Les commandes du terminal
+## 2. <a name='Cours1:Lescommandesduterminal'></a>Cours 1 : Les commandes du terminal
 
-### 1.1. <a name='CREERDESLIENSSYMBOLIQUES'></a>CREER DES LIENS SYMBOLIQUES
+### 2.1. <a name='CREERDESLIENSSYMBOLIQUES'></a>CREER DES LIENS SYMBOLIQUES
 
 ```bash
 ln -s {fichier ou dossier pointé} {nom_du_lien}
 ```
 
-### 1.2. <a name='VISUALISERLECONTENUDUNFICHIER'></a>VISUALISER LE CONTENU D'UN FICHIER
+### 2.2. <a name='VISUALISERLECONTENUDUNFICHIER'></a>VISUALISER LE CONTENU D'UN FICHIER
 
-#### 1.2.1. <a name='Commandecat'></a>Commande `cat`
+#### 2.2.1. <a name='Commandecat'></a>Commande `cat`
 
 ```bash
 cat {nom_du_fichier}
@@ -92,7 +96,7 @@ cat {nom_du_fichier}
 
 > Le problème de `cat`c'est que l'ensemble du fichier est affiché (pose souci pour les fichiers très longs ... )
 
-#### 1.2.2. <a name='Commandeless'></a> Commande `less`
+#### 2.2.2. <a name='Commandeless'></a> Commande `less`
 
 > La commande `less` lance d'une certaine façon, un éditeur de texte en lecture seule pour lire le fichier et y naviguer, en commançant par le haut du fichier
 
@@ -100,7 +104,7 @@ cat {nom_du_fichier}
 less {nom_du_fichier}
 ```
 
-##### Commandes :
+##### Commandes
 
 `ESPACE` : faire défiler le fichier
 
@@ -114,7 +118,7 @@ less {nom_du_fichier}
 
 `n`: _next_ - continuer la recherche
 
-#### 1.2.3. <a name='Commandetail'></a>Commande `tail`
+#### 2.2.3. <a name='Commandetail'></a>Commande `tail`
 
 > Affiche les 10 dernières lignes du fichier (par défaut)
 
@@ -128,7 +132,7 @@ tail {nom_du_fichier}
 
 `-n{integer}`: afficher le nombre de ligne passé en paramètre (au lieu des 10 lignes par défaut )
 
-#### 1.2.4. <a name='Commandehead'></a>Commande `head`
+#### 2.2.4. <a name='Commandehead'></a>Commande `head`
 
 > Affiche les 10 premières lignes du fichier (par défaut)
 
@@ -136,7 +140,7 @@ tail {nom_du_fichier}
 head {nom_du_fichier}
 ```
 
-#### 1.2.5. <a name='Commandestrings'></a>Commande `strings`
+#### 2.2.5. <a name='Commandestrings'></a>Commande `strings`
 
 > Extrait les chaînes de caractère compilés d'un fichier ou même d'un exécutable et les affiche à l'écran
 
@@ -144,9 +148,9 @@ head {nom_du_fichier}
 strings {nom_du_fichier}
 ```
 
-### 1.3. <a name='AFFICHERLESSTATSDUNFICHIER'></a>AFFICHER LES STATS D'UN FICHIER
+### 2.3. <a name='AFFICHERLESSTATSDUNFICHIER'></a>AFFICHER LES STATS D'UN FICHIER
 
-#### 1.3.1. <a name='Commandestat'></a>Commande `stat`
+#### 2.3.1. <a name='Commandestat'></a>Commande `stat`
 
 ```bash
 stat {nom_du_fichier}
@@ -163,7 +167,7 @@ Modif. : 2021-08-27 13:24:02.846841408 +0400
 Changt : 2021-08-27 13:2
 ```
 
-#### 1.3.2. <a name='Commandewc'></a>Commande `wc`
+#### 2.3.2. <a name='Commandewc'></a>Commande `wc`
 
 ```bash
 wc {nom_du_fichier}
@@ -177,7 +181,7 @@ pi@rpidemanu:/var $ wc log/syslog
 > - Le nombre de mots (3289)
 > - Le nombre d'octets (25077)
 
-#### 1.3.3. <a name='Commandedu'></a>Commande `du`
+#### 2.3.3. <a name='Commandedu'></a>Commande `du`
 
 > _**D**isk **U**sage_ : affiche une taille en nombre de blocs.. pas très pratique en l'état, on utilisera donc les options ci-dessous
 
@@ -191,7 +195,7 @@ pi@rpidemanu:/var $ wc log/syslog
 
 `-s` : afficher uniquement le total
 
-#### 1.3.4. <a name='Commandedf'></a>Commande `df`
+#### 2.3.4. <a name='Commandedf'></a>Commande `df`
 
 > Affiche le taille des périphériques montés sur la machine
 
@@ -208,7 +212,7 @@ tmpfs              2,1G       0  2,1G   0% /sys/fs/cgroup
 tmpfs              403M    4,1k  403M   1% /run/user/1000
 ```
 
-### 1.4. <a name='MANIPULERLESPERMISSIONS'></a>MANIPULER LES PERMISSIONS
+### 2.4. <a name='MANIPULERLESPERMISSIONS'></a>MANIPULER LES PERMISSIONS
 
 ```bash
 pi@rpidemanu:~ $ ls -l
@@ -224,7 +228,7 @@ drwxr-xr-x 2 pi pi 4096 mai    7 19:07 Templates
 drwxr-xr-x 2 pi pi 4096 mai    7 19:07 Videos
 ```
 
-#### 1.4.1. <a name='Lespermissions'></a>Les permissions
+#### 2.4.1. <a name='Lespermissions'></a>Les permissions
 
 r : read
 
@@ -238,7 +242,7 @@ Il y a trois blocs :
 - Le groupe propriétaire
 - Tout le monde
 
-#### 1.4.2. <a name='Commandechmod'></a>Commande `chmod`
+#### 2.4.2. <a name='Commandechmod'></a>Commande `chmod`
 
 > Modifie les permissions d'un fichier
 
@@ -333,15 +337,15 @@ On peut aussi combiner plusieurs actions en même temps :
 chmod u+rwx,g+rx-w,o+r-wx fichier3
 ```
 
-#### 1.4.3. <a name='Excuterdescommandesentantquesuperuser'></a>Exécuter des commandes en tant que superuser
+#### 2.4.3. <a name='Excuterdescommandesentantquesuperuser'></a>Exécuter des commandes en tant que superuser
 
 `sudo` : _Super User Do_ : exécute une commande en tant que superutilisateur
 
 `sudo su` : permet de rester superutilisateur pendant un laps de temps déterminé par le système
 
-### 1.5. <a name='EFFECTUERDESRECHERCHESETAUTRESOPERATIONS'></a>EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
+### 2.5. <a name='EFFECTUERDESRECHERCHESETAUTRESOPERATIONS'></a>EFFECTUER DES RECHERCHES ET AUTRES OPERATIONS
 
-#### 1.5.1. <a name='Commandefind'></a>Commande `find`
+#### 2.5.1. <a name='Commandefind'></a>Commande `find`
 
 ```bash
 find {repertoire_de_recherche} {-option} {critere_de_recherche} {action}
@@ -427,7 +431,7 @@ pi@rpidemanu:~/Documents $ find / -anewer /home/pi/Documents/raspberry-script/cp
 >
 > recherche tous les **répertoires**, **vides** accédés après `/home/pi/Documents/raspberry-script/cputemp`
 
-#### 1.5.2. <a name='Commandegrep'></a>Commande `grep`
+#### 2.5.2. <a name='Commandegrep'></a>Commande `grep`
 
 ```bash
 grep {RegExp} {fichier_repertoire}
@@ -458,7 +462,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 
 > affiche les fichiers (`-l`) qui contiennent le mot "gpio" dans le dossier courant, ainsi que les sous-dossiers (`-r`)
 
-#### 1.5.3. <a name='Leremplacementparglobbing'></a>Le remplacement par "globbing"
+#### 2.5.3. <a name='Leremplacementparglobbing'></a>Le remplacement par "globbing"
 
 `*` : remplace par n'importe quel(s) caractère(s)
 
@@ -476,7 +480,7 @@ pi@rpidemanu:~ $ grep "gpio" -rl ./Documents/raspberry-script
 >
 > `ls [^ws]??` : liste les fichiers ne commençant pas par w ou s et ayant trois caractères au total
 
-#### 1.5.4. <a name='Laredirection'></a>La redirection
+#### 2.5.4. <a name='Laredirection'></a>La redirection
 
 `STDIN`: entrée standard
 
@@ -498,7 +502,7 @@ ls -l > /home/pi/resultat
 
 `2>` ou `2>>`: redirige les erreurs
 
-#### 1.5.5. <a name='Lepipe'></a>Le pipe
+#### 2.5.5. <a name='Lepipe'></a>Le pipe
 
 > avec le 'pipe' on peut "rediriger" la sortie `STDOUT` d'une commande vers le `STDIN` d'une autre commande
 
@@ -517,7 +521,7 @@ Bookshelf
 
 > `ls`renvoie la liste des fichiers/dossiers présents dans le répertoire courant, envoie le résultat vers la commande `sort`qui se charge d'inverser le résultat grâce à l'option `-r`
 
-#### 1.5.6. <a name='Allerplusloinavecfind'></a>Aller plus loin avec `find`
+#### 2.5.6. <a name='Allerplusloinavecfind'></a>Aller plus loin avec `find`
 
 `-exec` : exécute une commande pour chaque résultat trouvé
 
@@ -551,7 +555,7 @@ On pourrait ensuite supprimer les fichiers trouvés par la commande
 pi@rpidemanu:~ $ find ~/Documents/raspberry-script/ -type f -print0 | xargs -0 grep -il 'gpio' | xargs rm
 ```
 
-#### 1.5.7. <a name='Compresseretdcompresseravectar'></a>Compresser et décompresser avec `tar`
+#### 2.5.7. <a name='Compresseretdcompresseravectar'></a>Compresser et décompresser avec `tar`
 
 ```bash
 tar -czvf mon-fichier.tar.gz .
@@ -589,11 +593,11 @@ tar -xvzf ../scripts.tar.gz
 
 ---
 
-## 2. <a name='Cours2:AdministrationLinux'></a>Cours 2 : Administration Linux
+## 3. <a name='Cours2:AdministrationLinux'></a>Cours 2 : Administration Linux
 
-### 2.1. <a name='RAPPELS'></a>RAPPELS
+### 3.1. <a name='RAPPELS'></a>RAPPELS
 
-#### 2.1.1. <a name='Lesmtacaractres'></a>Les métacaractères
+#### 3.1.1. <a name='Lesmtacaractres'></a>Les métacaractères
 
 |         Caractère          |            Interprétation             |
 | :------------------------: | :-----------------------------------: |
@@ -603,7 +607,7 @@ tar -xvzf ../scripts.tar.gz
 |             \              | Protection de caractère (échappement) |
 |     'xxx' (apostrophe)     |          Bloc de protection           |
 
-#### 2.1.2. <a name='Lesdiffrentstypesdefichier'></a>Les différents types de fichier
+#### 3.1.2. <a name='Lesdiffrentstypesdefichier'></a>Les différents types de fichier
 
 | Symbôle |        Type de fichier        |
 | :-----: | :---------------------------: |
@@ -614,7 +618,7 @@ tar -xvzf ../scripts.tar.gz
 |    p    | 'pipe' - fichier de transfert |
 |    s    |           'socket'            |
 
-#### 2.1.3. <a name='Larborescencedelaracinedelamachine'></a>L'arborescence de la racine `/`de la machine
+#### 3.1.3. <a name='Larborescencedelaracinedelamachine'></a>L'arborescence de la racine `/`de la machine
 
 ```bash
 pi@rpidemanu:~ $ ls /
@@ -656,7 +660,7 @@ boot  etc  lib   media       opt  root  sbin  srv   tmp  var
 
 `/var`: fichiers utilisés par les programmes qui tournent en tâche de fond
 
-### 2.2. <a name='LESPAQUETSLOGICIELS'></a>LES PAQUETS LOGICIELS
+### 3.2. <a name='LESPAQUETSLOGICIELS'></a>LES PAQUETS LOGICIELS
 
 On utilise un gestionnaire de paquet pour mettre à jour, supprimer ou rajouter de nouveaux logiciels.
 
@@ -664,26 +668,26 @@ Les plus connus sont `apt` sur Debian/Ubuntu, `dnf`ou `yum`sur CentOs.
 
 > Toutes modifications sur les paquets installés sur la machine sont des tâches d'administration. Il est nécessaire d'identifier en tant que _Super User_ via la commande `sudo`ou `su`si vous connaissez le mot de passe de l'utilisateur `root`
 
-#### 2.2.1. <a name='Mettrejourlespaquets'></a>Mettre à jour les paquets
+#### 3.2.1. <a name='Mettrejourlespaquets'></a>Mettre à jour les paquets
 
 ```bash
 sudo apt update #mets à jour la liste des paquets et leur version
 sudo apt upgrade #télécharge et installe les paquets à mettre à jour
 ```
 
-#### 2.2.2. <a name='Chercherunpaquet'></a>Chercher un paquet
+#### 3.2.2. <a name='Chercherunpaquet'></a>Chercher un paquet
 
 ```bash
 sudo apt search {paquet_recherché}
 ```
 
-#### 2.2.3. <a name='Installerunpaquet'></a>Installer un paquet
+#### 3.2.3. <a name='Installerunpaquet'></a>Installer un paquet
 
 ```bash
 sudo apt install {paquet_à_installer}
 ```
 
-#### 2.2.4. <a name='Supprimerunpaquet'></a>Supprimer un paquet
+#### 3.2.4. <a name='Supprimerunpaquet'></a>Supprimer un paquet
 
 ```bash
 sudo apt remove {paquet_à_désinstaller}
@@ -691,7 +695,7 @@ sudo apt remove {paquet_à_désinstaller}
 
 > Sur certaines distributions, on peut aussi utiliser le gestionnaire `snap`. Certains éditeurs de logiciels préférent ce gestionnaire pour héberger eux-même leurs paquets
 
-#### 2.2.5. <a name='Installerleslogicielsdepuislessources'></a>Installer les logiciels depuis les sources
+#### 3.2.5. <a name='Installerleslogicielsdepuislessources'></a>Installer les logiciels depuis les sources
 
 On lance le programme `configure`qui est présent dans le code source du programme téléchargé. `configure`vérifie que l'ensemble des dépendances nécessaires au programme soient bien installées sur la machine. Sinon, il renvoie la liste des dépendances manquantes.
 
@@ -701,9 +705,9 @@ sudo make #compile le code source
 sudo make install #installe le programme sur la machine
 ```
 
-### 2.3. <a name='LESTOCKAGE'></a>LE STOCKAGE
+### 3.3. <a name='LESTOCKAGE'></a>LE STOCKAGE
 
-#### 2.3.1. <a name='Commandelsblk'></a>Commande `lsblk`
+#### 3.3.1. <a name='Commandelsblk'></a>Commande `lsblk`
 
 > Liste l'ensemble des périphériques de stockage
 
@@ -715,7 +719,7 @@ mmcblk0     179:0    0 14,9G  0 disk
 └─mmcblk0p2 179:2    0 14,6G  0 part /
 ```
 
-#### 2.3.2. <a name='Commandefdisk'></a>Commande `fdisk`
+#### 3.3.2. <a name='Commandefdisk'></a>Commande `fdisk`
 
 > Utilitaire pour partionner son disque dur
 
@@ -839,7 +843,7 @@ Disk identifier: 56935816-52FA-5B4C-80B8-2182DEB1B8D7
 
 > Le concept de partitons primaires et élémentaires n'existent plus sous le format `GPT`. La seule limitation est celle du nombre de partitions possible qui est de 128
 
-#### 2.3.3. <a name='Commandemkfs'></a>Commande `mkfs`
+#### 3.3.3. <a name='Commandemkfs'></a>Commande `mkfs`
 
 > Créer un système de fichier
 
@@ -862,7 +866,7 @@ Writing superblocks and filesystem accounting information: done
 
 > Il existe le format ext4, xfs, et d'autres
 
-#### 2.3.4. <a name='Commandemount'></a>Commande `mount`
+#### 3.3.4. <a name='Commandemount'></a>Commande `mount`
 
 > Monter un périphérique de stockage ou une partition sur un répertoire
 
@@ -900,9 +904,9 @@ mmcblk0     179:0    0 14,9G  0 disk
 └─mmcblk0p3 179:3    0    1M  0 part /data-test
 ```
 
-### 2.4. <a name='LERESEAU'></a>LE RESEAU
+### 3.4. <a name='LERESEAU'></a>LE RESEAU
 
-#### 2.4.1. <a name='LeNetworkManager'></a>Le Network Manager
+#### 3.4.1. <a name='LeNetworkManager'></a>Le Network Manager
 
 ```bash
 pi@rpidemanu:/etc/network $ systemctl status NetworkManager
@@ -944,15 +948,15 @@ NAME                 UUID                                  TYPE      DEVICE
 Connexion filaire 1  cf521997-c08a-3968-91c9-c9a693ef2340  ethernet  --
 ```
 
-#### 2.4.2. <a name='Lesfichiersdeconfiguration'></a>Les fichiers de configuration
+#### 3.4.2. <a name='Lesfichiersdeconfiguration'></a>Les fichiers de configuration
 
 > Sous Debian, le fichier de configuration réseau se trouve dans `/etc/network/interfaces`
 
-### 2.5. <a name='LESSERVICES'></a>LES SERVICES
+### 3.5. <a name='LESSERVICES'></a>LES SERVICES
 
 > Un 'daemon' ou service est un programme qui s'exécute indépendamment de l'utilisateur et en tâche de fond
 
-#### 2.5.1. <a name='Leprogrammesystemdviasystemctl'></a>Le programme `systemd` via `systemctl`
+#### 3.5.1. <a name='Leprogrammesystemdviasystemctl'></a>Le programme `systemd` via `systemctl`
 
 > C'est une pièce maîtresse de l'architecture [GNU](https://doc.ubuntu-fr.org/gnu)/[Linux](https://doc.ubuntu-fr.org/linux). En effet, c'est le premier programme lancé par le noyau (il a donc le PID N°1) et il se charge de lancer tous les programmes suivants en ordre jusqu'à obtenir un système opérationnel pour l'utilisateur, selon le mode déterminé (single user, multi-user, graphique). C'est également à lui qu'incombe la tache de redémarrer ou arrêter votre ordinateur proprement. [SOURCE: https://doc.ubuntu-fr.org/systemd]
 
@@ -1048,7 +1052,7 @@ Pour remettre le système dans son état normal malgré un service en échec (da
 systemctl reset-failed
 ```
 
-#### 2.5.2. <a name='Analysedutempsdedmarragedesservices'></a>Analyse du temps de démarrage des services
+#### 3.5.2. <a name='Analysedutempsdedmarragedesservices'></a>Analyse du temps de démarrage des services
 
 ```bash
 pi@rpidemanu:~ $ systemd-analyze
@@ -1084,7 +1088,7 @@ pi@rpidemanu:~ $ systemd-analyze plot > boot.svg
 >
 > La commande `plot` va générer un SVG inutilisable si on l'affiche sur la sortie standard, raison pour laquelle on demande la création d'un fichier
 
-### 2.6. <a name='LEGESTIONNAIREDELOGS:syslog'></a>LE GESTIONNAIRE DE LOGS : `syslog`
+### 3.6. <a name='LEGESTIONNAIREDELOGS:syslog'></a>LE GESTIONNAIRE DE LOGS : `syslog`
 
 `Syslog` est un canal de communication pour les programmes et les services n'utilisant pas le terminal et donc ne pouvant pas envoyer des informations dans la sortie standard.
 
@@ -1108,7 +1112,7 @@ Les critères de sélection dépendant de la structure des messages :
 
 - 4- Message
 
-#### 2.6.1. <a name='Configurerrsyslog'></a>Configurer `rsyslog`
+#### 3.6.1. <a name='Configurerrsyslog'></a>Configurer `rsyslog`
 
 Dans la plupart des distribution, le fichier de configuration se trouve dans le répertoire `/etc/rsyslog.conf`
 
@@ -1152,3 +1156,102 @@ mail.err                        /var/log/mail.err
 > Pour que le système prend en compte la modification du fichier de configuration de `rsyslog`, il faudra redémarrer le service
 >
 > `systemctl restart rsyslog`
+
+### 3.7. <a name='AUTOMATISERLESCOMMANDES'></a>AUTOMATISER LES COMMANDES
+
+#### 3.7.1. <a name='Leservicecron'></a>Le service `cron`
+
+Le service `cron` nous permet d'automatiser cette tâche périodique (tous les jours, toutes les heures, tous les 20 du mois, tous les dimanches, etc.)
+
+On peut interdire ou autoriser les utilisateurs d'utiliser `cron`
+
+##### Configurer les permissions
+
+Pour interdire un ou plusieurs d'utilisateur d'utiliser le service `cron`, il faut créer un fichier `cron.deny` dans le répertoire `/etc/` et y insérer la liste des utilisateurs concernés.
+
+A contrario, pour autoriser un ou plusieurs d'utilisateur d'utiliser le service `cron`, il faut créer un fichier `cron.allow` dans le répertoire `/etc/` et y insérer la liste des utilisateurs concernés.
+
+> Attention, si le fichier `cron.allow` est existant, seul les utilisateurs présents dans cette liste seront autorisés à utiliser le service `cron` mais s'ils ne sont pas présents dans le fichier `cron.deny`
+
+##### Commande `crontab`
+
+La commande `crontab` nous permet de programmer des tâches
+
+`-l` : liste les programmations pour l'utilisateur courant
+
+```bash
+pi@rpidemanu:~ $ crontab -l
+no crontab for pi
+```
+
+`-r` : supprime tous les programmations pour l'utilisateur courant
+
+`-e` : lance l'édition de la `crontab` pour l'utilisateur courant
+
+Pour programmer une tâche, on doit respecter le pattern ci-dessous :
+
+| minute | heure | jour du mois | mois | jour de la semaine | tâche à exécuter |
+| :----: | :---: | :----------: | :--: | :----------------: | :--------------: |
+
+> Pour les jours de la semaine, dimanche correspond à 0, lundi à 1, mardi à 2, etc...
+>
+> Si on précise le jour de la semaine, on ne peut pas préciser le jours du mois, ni le mois (et vice-versa)
+
+Par exemple, le code ci-dessous lancera une mise à jour de la liste des paquets toutes les 30 minutes :
+
+```bash
+30 * * * * sudo apt update
+```
+
+On peut séparer plusieurs valeurs par une virgule `,`. Cette tâche se lancera toutes les 30 et 45 min de chaque heure (12h30, 12h45 ; 13h30, 13h45; etc...).
+
+```b
+30,45 * * * * sudo apt update
+```
+
+On peut lancer une tâche toutes les 2 heures
+
+```bash
+* */2 * * * sudo apt update
+```
+
+#### 3.7.2. <a name='Leserviceat'></a>Le service `at`
+
+Le service `at` nous permet de programmer une tâche à exécuter une seule fois (pas de périodicité - le cas échéant on utilisera `cron`)
+
+```bash
+pi@rpidemanu:~ $ at 14:30 #1 - on programme une tâche à 14h30
+warning: commands will be executed using /bin/sh
+at> sudo reboot #2 - on tape la commande à exécuter à 14h30 (ici redémarrage du système)
+at> <EOT> #3 - pour terminer on utilise la combinaise de touche CTRL + D (ou CMD + D sur Mac)
+job 1 at Wed Sep  1 14:30:00 2021 #4 - confirmation
+```
+
+Pour les lister les "jobs" ou tâches à venir : `atq`
+
+```bash
+pi@rpidemanu:~ $ atq
+2       Wed Sep  1 15:00:00 2021 a pi
+```
+
+Pour supprimer une tâche : `atrm {numero_du_job}`
+
+```bash
+pi@rpidemanu:~ $ atrm 2
+```
+
+Quelques commandes supplémentaires
+
+```bash
+pi@rpidemanu:~ $ at 14:00 010122 #Le 01 janvier 2022, à 14heures
+
+pi@rpidemanu:~ $ at midnight 	 #A minuit
+
+pi@rpidemanu:~ $ at noon		 #A midi
+
+pi@rpidemanu:~ $ at teatime		 #A l'heure du thé (dépend de la configuration de la machine)
+
+pi@rpidemanu:~ $ at now + 5min	 #Dans 5 minutes
+
+pi@rpidemanu:~ $ at now + 2days	 #Dans 2 jours
+```
